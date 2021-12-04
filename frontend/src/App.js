@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session'
+import Navigation from './components/Navigation';
 
 
 function App() {
@@ -15,20 +16,19 @@ function App() {
   }, [dispatch]);
 
   return isLoaded && (
-    <Switch>
-      <Route exact path='/'>
-        Home
-      </Route>
-      <Route path='/login'>
-        <LoginFormPage />
-      </Route>
-      <Route path='/signup'>
-        <SignupFormPage />
-      </Route>
-      <Route>
-        Temp 404 Page
-      </Route>
-    </Switch>
+    <>
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+        <Switch>
+          <Route path="/login">
+            <LoginFormPage />
+          </Route>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+        </Switch>
+      )}
+    </>
   );
 }
 
