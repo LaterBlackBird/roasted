@@ -16,6 +16,9 @@ const removeUser = () => {
   };
 };
 
+
+
+
 // thunk action creators
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
@@ -26,16 +29,30 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  };
 };
 
-export const restoreUser = (user) => async (dispatch) => {
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch('/api/session', {
+    method: 'DELETE'
+  });
+  if (response.ok) {
+    dispatch(removeUser())
+    return response;
+  };
+};
+
+export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch('/api/session')
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  };
 };
 
 export const signupUser = (user) => async (dispatch) => {
@@ -48,10 +65,15 @@ export const signupUser = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  };
 };
+
+
+
 
 const initialState = { user: null };
 
