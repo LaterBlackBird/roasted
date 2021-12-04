@@ -18,11 +18,8 @@ function App() {
       <Route exact path='/'>
         Home
       </Route>
-      <Route path="/login">
+      <Route path='/login'>
         <LoginFormPage />
-      </Route>
-      <Route>
-        
       </Route>
       <Route>
         Temp 404 Page
