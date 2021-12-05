@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
+import './LoginFormModal.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -20,31 +21,38 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Username or Email
+    <form id='login-form' onSubmit={handleSubmit}>
+      <img id='login-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png' alt='roasted logo' />
+      <div className='login-text' id='roasted-name'>Roasted</div>
+      <p className='login-text' id='roasted-tagline'>Cozy Up With Friends</p>
+      <div className='login-input'>
+        <label>
+          Username or Email
+        </label>
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Password
+      </div>
+      <div className='login-input'>
+        <label>
+          Password
+        </label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Log In</button>
+      </div>
+      <button id='login-button' type="submit">Log In</button>
+      <ul>
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
     </form>
   );
 }
