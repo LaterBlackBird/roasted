@@ -20,6 +20,19 @@ function LoginForm() {
     );
   };
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+    const demoCredential ='Demo-lition';
+    const demoPassword = 'password';
+    setErrors([]);
+    return dispatch(sessionActions.demoLogin({ demoCredential, demoPassword })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  }
+
   return (
     <form id='login-form' onSubmit={handleSubmit}>
       <img id='login-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png' alt='roasted logo' />
@@ -47,7 +60,10 @@ function LoginForm() {
           required
         />
       </div>
-      <button id='login-button' type="submit">Log In</button>
+      <div className='login-button-container'>
+        <button className='login-button' id='login' type="submit">Log In</button>
+        <button className='login-button' id='demo' onClick={demoLogin}>Demo</button>
+      </div>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
