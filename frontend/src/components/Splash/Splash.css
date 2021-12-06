@@ -1,0 +1,44 @@
+.homepage-container {
+    padding: 5%;
+    display: flex;
+}
+
+#branding-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+#home-logo {
+    width: 30%;
+  }
+
+  #home-logo::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+.branding {
+    color: white;
+}
+
+#home-name{
+    font-size: 4em;
+    margin: 1rem 0 0 0;
+}
+
+#home-slogan{
+    font-size: 100%;
+    font-weight: 350;
+    margin-top: .05rem;
+}
+
+#home-tagline{
+    font-weight: 400;
+    font-size: 2rem;
+    width: 75%;
+    text-align: center;
+    font-stretch: expanded;
+}
