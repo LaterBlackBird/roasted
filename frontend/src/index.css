@@ -1,1 +1,17 @@
-/* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url(https://res.cloudinary.com/dd1ndszow/image/upload/v1638736371/roasted-home-background_k0oxhj.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+#root{
+    height: 100vh;
+    margin: 0;
+}
