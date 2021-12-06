@@ -34,7 +34,25 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
     }
 
     await setTokenCookie(res, user);
-    
+
+    return res.json({ user });
+}));
+
+
+// Demo user log in
+router.post('/demo', asyncHandler(async (req, res, next) => {
+    const { demoCredential, demoPassword } = req.body;
+    const user = await User.demoLogin({ demoCredential, demoPassword });
+
+    if (!user) {
+        const err = new Error('Login failed');
+        err.status = 401;
+        err.title = 'Login failed';
+        err.errors = ['The provided credentials were invalid.'];
+        return next(err);
+    }
+
+    await setTokenCookie(res, user);
 
     return res.json({ user });
 }));
