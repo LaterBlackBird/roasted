@@ -1,5 +1,5 @@
 .homepage-container {
-    padding: 5%;
+    padding: 5% 15%;
     display: flex;
 }
 
@@ -11,7 +11,7 @@
 }
 
 #home-logo {
-    width: 30%;
+    width: 40%;
   }
 
   #home-logo::after {
@@ -41,4 +41,27 @@
     width: 75%;
     text-align: center;
     font-stretch: expanded;
+}
+
+.feature-list-container{
+    background-color: #f7bd5e;
+    margin: 10% 10% 0 10%;
+    border-radius: 5px;
+}
+
+.feature-list-container>p{
+    box-sizing: border-box;
+    padding: 5%;
+    padding-bottom: 0;
+    font-size: 1.5rem;
+}
+
+.feature-box p{
+    background-color: #ffcc7a;
+    margin: 10%;
+    margin-top: 0;
+    padding: 10%;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #382300;
+    text-align: center;
 }

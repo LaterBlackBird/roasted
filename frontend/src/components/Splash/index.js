@@ -11,10 +11,11 @@ const Splash = () => {
                 <h2 className ='branding' id='home-tagline'>DISCOVER AND SHARE <br/> COFFEE YOU LOVE</h2>
             </div>
             <div className='feature-list-container'>
-                <div>
+                <p>Roasted Features Include:</p>
+                <div className='feature-box'>
                     <p>ADD YOUR FAVORITE COFFEE SO OTHERS CAN FIND THEM TOO</p>
                 </div>
-                <div>
+                <div className='feature-box'>
                     <p>CHECK-IN SO YOUR FRIENDS KNOW YOUR FAVORITE SPOTS AND DRINKS</p>
                 </div>
             </div>
