@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 // const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Coffee } = require('../../db/models');
+const { Coffee, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -25,7 +25,9 @@ const validateCoffee = [
 
 // Get all coffees
 router.get('/', asyncHandler(async (req, res) => {
-    const allCoffees = await Coffee.findAll();
+    const allCoffees = await Coffee.findAll({
+        include: User
+    });
     return res.json({ allCoffees });
 }));
 

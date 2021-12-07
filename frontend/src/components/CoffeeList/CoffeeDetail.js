@@ -1,27 +1,34 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-// import { getAllCoffees } from '../../store/coffee';
 import './CoffeeList.css'
 
 
-const CoffeeDetail = ({coffee}) => {
-    // const dispatch = useDispatch();
+const CoffeeDetail = ({ coffee }) => {
 
-    // useEffect(() => {
-    //     dispatch(getAllCoffees())
-    // }, [dispatch])
+    const sessionUser = useSelector(state => state.session.user);
 
-    // const coffee = useSelector(state => {
-    //     return state.coffee.list;
-    // })
-
-    console.log(coffee)
-
+    let userOptions;
+    if (sessionUser && sessionUser.username === coffee.User.username) {
+        userOptions = (
+            <div>
+                this worked
+            </div>
+        )
+    }
 
     return (
-        <div>
-            <p>{coffee.name}</p>
-            <p>{coffee.description}</p>
+        <div className='coffee-detail'>
+            <div className='coffee-detail-info'>
+                <img className='coffee-img' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638898746/Coffee-Default_to4zq1.png" alt="default coffee cup" />
+                <div className='coffee-detail-text'>
+                    <span className='coffee-detail-name'>{coffee.name}</span>
+                    <span className='coffee-detail-description'>{coffee.description}</span>
+                    <span className='coffee-detail-user'>Created by {coffee.User.username}</span>
+                </div>
+            </div>
+            <div className='user-options-container'>
+                {userOptions}
+            </div>
         </div>
     )
 }
