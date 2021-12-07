@@ -49,3 +49,12 @@
     margin-top: 2rem;
     color: #382300;
 }
+
+.fa-edit, .fa-trash-alt{
+    font-size: .8rem;
+    margin: 0 .8rem;
+}
+
+.fa-trash-alt{
+    color: rgba(255, 0, 0, .7);
+}

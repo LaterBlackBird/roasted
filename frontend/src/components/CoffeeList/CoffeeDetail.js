@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './CoffeeList.css'
 
 
@@ -11,7 +10,8 @@ const CoffeeDetail = ({ coffee }) => {
     if (sessionUser && sessionUser.username === coffee.User.username) {
         userOptions = (
             <div>
-                this worked
+                <i class="far fa-edit"> <span> Edit</span></i>
+                <i class="far fa-trash-alt"> <span> Delete</span></i>
             </div>
         )
     }
