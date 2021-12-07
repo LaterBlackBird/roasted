@@ -6,6 +6,7 @@ import Splash from './components/Splash';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import CoffeeList from "./components/CoffeeList";
+import AddCoffeeForm from "./components/AddCoffeeForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +27,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/coffees">
+          <Route exact path="/coffees">
             <CoffeeList />
+          </Route>
+          <Route path="/coffees/new">
+            <AddCoffeeForm />
           </Route>
         </Switch>
       )}
