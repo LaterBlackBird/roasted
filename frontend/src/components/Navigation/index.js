@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <NavLink className='nav-link' to="/signup">Create An Account</NavLink>
+        <NavLink className='navlink' to="/signup">Create An Account</NavLink>
         <LoginFormModal />
       </>
     );
@@ -34,8 +34,8 @@ function Navigation({ isLoaded }) {
       {sessionUser && smallLogo}
       <ul className='navbar-links'>
         <li>
-          <NavLink className='nav-link' exact to="/">Home</NavLink>
-          <NavLink className='nav-link' to="/coffees">Coffee List</NavLink>
+          <NavLink className='navlink' exact to="/">Home</NavLink>
+          <NavLink className='navlink' to="/coffees">Coffee List</NavLink>
           {isLoaded && sessionLinks}
         </li>
       </ul>
