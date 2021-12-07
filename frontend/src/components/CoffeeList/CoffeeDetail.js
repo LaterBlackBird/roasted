@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './CoffeeList.css'
 
 
@@ -10,8 +11,8 @@ const CoffeeDetail = ({ coffee }) => {
     if (sessionUser && sessionUser.username === coffee.User.username) {
         userOptions = (
             <div>
-                <i class="far fa-edit"> <span> Edit</span></i>
-                <i class="far fa-trash-alt"> <span> Delete</span></i>
+                <Link to={`/coffees/${coffee.id}`}><i class ="far fa-edit"> <span> Edit</span></i></Link>
+                <i class ="far fa-trash-alt"> <span> Delete</span></i>
             </div>
         )
     }

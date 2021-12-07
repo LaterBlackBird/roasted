@@ -29,7 +29,7 @@
   margin-top: 2em;
 }
 
-a {
+.nav-link {
   text-decoration: none;
   color: #ffcc7a;
   padding: 0.75rem;
@@ -39,7 +39,7 @@ a {
   transition: all 1s ease;
 }
 
-a:hover {
+.nav-link:hover {
   background-color: #1f69ab;
   color: white;
 }
