@@ -1,0 +1,79 @@
+#signup-form {
+    /* background-color: rgba(247, 189, 94, 0.7); */
+    background-color: rgba(94, 175, 247, .7);
+    height: 50%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid #1f69ab;
+  }
+
+  #signup-form label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+  }
+
+  #signup-form input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    border-radius: 5px;
+    border: 1px grey solid;
+    height: 1.5rem;
+    width: 20em;
+  }
+
+  #signup-logo {
+    width: 15%;
+    margin-top: 2%;
+  }
+
+  #signup-logo::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  #signup-form .login-text {
+    color: white;
+  }
+
+  #signup-form #roasted-name {
+    font-size: 5vw;
+    margin-top: -1%;
+  }
+
+  #signup-form #roasted-tagline {
+    font-size: 1vw;
+    margin: -.5rem 0 2rem 0;
+  }
+
+  .login-input input {
+    border: 1px grey solid;
+    border-radius: 5px;
+    height: 1.5rem;
+    width: 20em;
+  }
+
+
+
+  #signup-form button{
+    height: 2.5em;
+    width: 8em;
+    color: #1f69ab;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    background-color: #f7bd5e;
+    border-radius: 5px;
+    margin: .5rem;
+  }
+
+  #signup-form li {
+      color: #382300;
+  }
