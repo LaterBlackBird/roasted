@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import LoginFormModal from '../LoginFormModal';
 import './SignupFormPage.css'
 
 function SignupFormPage() {
@@ -29,10 +30,10 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+    <form id='signup-form' onSubmit={handleSubmit}>
+      <img id='signup-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png' alt='roasted logo' />
+      <div className='login-text' id='roasted-name'>Roasted</div>
+      <p className='login-text' id='roasted-tagline'>Cozy Up With Friends</p>
       <label>
         Email
         <input
@@ -70,6 +71,9 @@ function SignupFormPage() {
         />
       </label>
       <button type="submit">Sign Up</button>
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
     </form>
   );
 }
