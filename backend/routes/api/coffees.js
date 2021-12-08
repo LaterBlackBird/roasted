@@ -33,13 +33,11 @@ router.get('/', asyncHandler(async (req, res) => {
 // Get a single coffee
 router.get('/:id', asyncHandler(async (req, res) => {
     const coffeeId = req.params.id;
-    const coffee = await Coffee.findByPk(coffeeId);
-    const data = res.json(coffee.name);
-    if (!coffee) {
-        console.log(data.name)
-    } else {
-        console.log('no coffee found')
-    }
+    const coffee = await Coffee.findByPk(coffeeId, {
+        include: User
+    });
+    return res.json(coffee);
+
 }));
 
 // Create a coffee
@@ -59,7 +57,7 @@ router.post('/', validateCoffee, asyncHandler(async (req, res) => {
 }));
 
 // Update a coffee
-router.patch('/:id', validateCoffee, asyncHandler(async (req, res) => {
+router.put('/:id', validateCoffee, asyncHandler(async (req, res) => {
     const coffeeId = req.params.id
     const { name, description, imageUrl } = req.body;
     const coffeeToUpdate = await Coffee.findByPk(coffeeId);

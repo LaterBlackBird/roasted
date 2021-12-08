@@ -5,6 +5,7 @@ import { csrfFetch } from './csrf';
 const GET_COFFEES = 'coffees/GET_COFFEES'
 const ADD_COFFEE = 'coffees/ADD_COFFEE'
 const DELETE_COFFEE = 'coffees/DELETE_COFFEE'
+const EDIT_COFFEE = 'coffees/EDIT_COFFEE'
 
 // Actions
 const loadCoffees = (list) => {
