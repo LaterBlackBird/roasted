@@ -13,12 +13,12 @@ const loadCheckins = (list) => {
     }
 }
 
-const addCheckin = (newCoffee) => {
-    return {
-        type: ADD_CHECKIN,
-        newCoffee
-    }
-}
+// const addCheckin = (newCoffee) => {
+//     return {
+//         type: ADD_CHECKIN,
+//         newCoffee
+//     }
+// }
 
 
 // Thunk action creators
@@ -26,25 +26,26 @@ const addCheckin = (newCoffee) => {
 export const getAllCheckins = () => async (dispatch) => {
     const response = await csrfFetch('/api/checkins');
     if (response.ok) {
-        const list = await response.json();
-        dispatch(loadCheckins(list));
+        const data = await response.json();
+        dispatch(loadCheckins(data));
+        console.log(`this is return`, data)
     }
 }
 
-export const addNewCheckin = newCoffee => async (dispatch) => {
-    const response = await csrfFetch('/api/checkins', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newCoffee)
-    });
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(addCheckin(data));
-        return data;
-    }
-}
+// export const addNewCheckin = newCoffee => async (dispatch) => {
+//     const response = await csrfFetch('/api/checkins', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(newCoffee)
+//     });
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(addCheckin(data));
+//         return data;
+//     }
+// }
 
 
 
@@ -54,9 +55,9 @@ const checkinReducer = (state = { list: [] }, action) => {
     switch (action.type) {
         case GET_CHECKINS:
             const allCheckins = {};
-            action.list.allCoffees.forEach(coffee => {
-                allCheckins[coffee.id] = coffee;
-            });
+            // action.list.allCoffees.forEach(coffee => {
+            //     allCheckins[coffee.id] = coffee;
+            // });
             return {
                 ...allCheckins,
                 ...state,

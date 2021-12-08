@@ -6,7 +6,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-const validateCoffee = [
+const validateCheckin = [
     check('location')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a location'),
@@ -22,7 +22,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 // Create a check-in
-router.post('/', validateCoffee, asyncHandler(async (req, res) => {
+router.post('/', validateCheckin, asyncHandler(async (req, res) => {
     const { userId, name, description, imageUrl } = req.body;
     const newCoffee = await Coffee.create({
         userId,
