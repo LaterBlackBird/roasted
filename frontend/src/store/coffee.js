@@ -66,7 +66,6 @@ export const deleteThisCoffee = coffeeId => async (dispatch) => {
         method: 'DELETE',
     });
     if (response.ok) {
-        console.log(coffeeId);
         dispatch(removeCoffee(coffeeId));
     }
 }
@@ -81,8 +80,7 @@ export const editThisCoffee = revCoffee => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        // dispatch(editCoffee(data));
+        dispatch(editCoffee(data));
     }
 }
 
@@ -113,6 +111,14 @@ const coffeeReducer = (state = { list: [] }, action) => {
                 coffee => coffee.id !== action.coffeeId
                 )
             return newState;
+        case EDIT_COFFEE:
+            const editState = {...state};
+            editState[action.revCoffee.id] = action.revCoffee;
+            editState.list = editState.list.filter(
+                coffee => coffee.id !== action.revCoffee.id
+            );
+            editState.list.push(action.revCoffee);
+            return editState;
         default:
             return state;
     }

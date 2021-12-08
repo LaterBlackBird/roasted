@@ -40,8 +40,6 @@ function CoffeeEditForm() {
             });
     };
 
-
-
     if (!sessionUser) return <Redirect to="/" />;
 
     return (
