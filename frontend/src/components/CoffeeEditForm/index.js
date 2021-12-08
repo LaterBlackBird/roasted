@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { getOneCoffee } from "../../store/coffee";
+import { editThisCoffee } from "../../store/coffee";
 import './CoffeeEditForm.css'
 
 function CoffeeEditForm() {
@@ -20,25 +20,24 @@ function CoffeeEditForm() {
         setCoffeeName(coffeeData.name)
         setDescription(coffeeData.description)
         setImageUrl(coffeeData.imageUrl)
-    }, [])
-
-    console.log(coffeeData)
+    }, [coffeeData.name, coffeeData.description, coffeeData.imageUrl])
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // const newCoffee = {
-        //     userId: sessionUser.id,
-        //     name: coffeeName,
-        //     description,
-        //     imageUrl
-        // }
-        // setErrors([]);
-        // return dispatch(addNewCoffee(newCoffee))
-        //     .catch(async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     });
+        const revCoffee = {
+            coffeeId: id,
+            userId: sessionUser.id,
+            name: coffeeName,
+            description,
+            imageUrl
+        }
+        setErrors([]);
+        return dispatch(editThisCoffee(revCoffee))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
     };
 
 

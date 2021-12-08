@@ -29,6 +29,13 @@ const removeCoffee = (coffeeId) => {
     }
 }
 
+const editCoffee = (revCoffee) => {
+    return {
+        type: EDIT_COFFEE,
+        revCoffee
+    }
+}
+
 
 // Thunk action creators
 // Retrieve information from the database
@@ -61,6 +68,21 @@ export const deleteThisCoffee = coffeeId => async (dispatch) => {
     if (response.ok) {
         console.log(coffeeId);
         dispatch(removeCoffee(coffeeId));
+    }
+}
+
+export const editThisCoffee = revCoffee => async (dispatch) => {
+    const response = await csrfFetch(`/api/coffees/${revCoffee.coffeeId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(revCoffee)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        // dispatch(editCoffee(data));
     }
 }
 
