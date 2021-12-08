@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import { addNewCoffee } from "../../store/coffee";
 import './AddCoffeeForm.css'
 
 function AddCoffeeForm() {
@@ -9,22 +9,30 @@ function AddCoffeeForm() {
     const sessionUser = useSelector((state) => state.session.user);
     const [coffeeName, setCoffeeName] = useState("");
     const [description, setDescription] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
     if (!sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const newCoffee = {
+            userId: sessionUser.id,
+            name: coffeeName,
+            description,
+            imageUrl
+        }
+
         setErrors([]);
-        //       return dispatch(sessionActions.signupUser({ coffeeName, description, imgUrl }))
-        //         .catch(async (res) => {
-        //           const data = await res.json();
-        //           if (data && data.errors) setErrors(data.errors);
-        //         });
-        //     }
-        //     return setErrors(['Confirm imgUrl field must be the same as the imgUrl field']);
+        return dispatch(addNewCoffee(newCoffee))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+
     };
+
 
     return (
         <form id='add-coffee-form' onSubmit={handleSubmit}>
@@ -54,8 +62,8 @@ function AddCoffeeForm() {
                 Image URL
                 <input
                     type="text"
-                    value={imgUrl}
-                    onChange={(e) => setImgUrl(e.target.value)}
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
                     placeholder='https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg'
                 />
             </label>

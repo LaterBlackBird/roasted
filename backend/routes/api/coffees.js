@@ -20,7 +20,6 @@ const validateCoffee = [
         .isLength({ min: 6 })
         .withMessage('Please provide a description.'),
     handleValidationErrors
-
 ];
 
 // Get all coffees
@@ -52,7 +51,7 @@ router.post('/', validateCoffee, asyncHandler(async (req, res) => {
         description,
         imageUrl,
     });
-    res.json({ message: "Successful" });
+    res.json({ newCoffee });
 }));
 
 // Update a coffee
