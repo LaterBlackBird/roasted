@@ -23,7 +23,7 @@ function CoffeeEditForm() {
         setImageUrl(coffeeData.imageUrl)
     }, [coffeeData.name, coffeeData.description, coffeeData.imageUrl])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const revCoffee = {
@@ -34,11 +34,13 @@ function CoffeeEditForm() {
             imageUrl
         }
         setErrors([]);
-        return dispatch(editThisCoffee(revCoffee))
+        const edited = await dispatch(editThisCoffee(revCoffee))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
+
+        if (edited) history.push('/coffees')
     };
 
     const returnToList = () => {

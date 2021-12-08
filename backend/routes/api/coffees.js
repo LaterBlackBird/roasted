@@ -60,7 +60,9 @@ router.post('/', validateCoffee, asyncHandler(async (req, res) => {
 router.put('/:id', validateCoffee, asyncHandler(async (req, res) => {
     const coffeeId = req.params.id
     const { name, description, imageUrl } = req.body;
-    const coffeeToUpdate = await Coffee.findByPk(coffeeId);
+    const coffeeToUpdate = await Coffee.findByPk(coffeeId, {
+        include: User
+    });
 
     await coffeeToUpdate.update({
         name,

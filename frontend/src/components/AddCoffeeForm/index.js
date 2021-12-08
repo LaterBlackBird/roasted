@@ -13,8 +13,6 @@ function AddCoffeeForm() {
     const [imageUrl, setImageUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (!sessionUser) return <Redirect to="/" />;
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -27,10 +25,10 @@ function AddCoffeeForm() {
         }
 
         const added = await dispatch(addNewCoffee(newCoffee))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
+        .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+        });
 
         if (added) history.push('/coffees')
 
@@ -40,6 +38,7 @@ function AddCoffeeForm() {
         history.push('/coffees')
     }
 
+    if (!sessionUser) return <Redirect to="/" />;
 
     return (
         <form id='add-coffee-form' onSubmit={handleSubmit}>

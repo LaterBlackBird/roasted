@@ -82,6 +82,7 @@ export const editThisCoffee = revCoffee => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(editCoffee(data));
+        return data;
     }
 }
 
