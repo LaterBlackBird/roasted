@@ -23,13 +23,14 @@ function AddCoffeeForm() {
             description,
             imageUrl
         }
-
         setErrors([]);
         return dispatch(addNewCoffee(newCoffee))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
+
+            
 
     };
 

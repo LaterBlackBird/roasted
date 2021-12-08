@@ -44,6 +44,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // Create a coffee
 router.post('/', validateCoffee, asyncHandler(async (req, res) => {
+    console.log(req.body.name)
     const { userId, name, description, imageUrl } = req.body;
     const newCoffee = await Coffee.create({
         userId,

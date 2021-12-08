@@ -25,7 +25,7 @@ const addCoffee = (newCoffee) => {
 // Thunk action creators
 // Retrieve information from the database
 export const getAllCoffees = () => async (dispatch) => {
-    const response = await csrfFetch('api/coffees');
+    const response = await csrfFetch('/api/coffees');
     if (response.ok) {
         const list = await response.json();
         dispatch(loadCoffees(list));
@@ -33,10 +33,10 @@ export const getAllCoffees = () => async (dispatch) => {
 }
 
 export const addNewCoffee = newCoffee => async (dispatch) => {
-    const response = await csrfFetch('api/coffees', {
-        method: "POST",
+    const response = await csrfFetch('/api/coffees', {
+        method: 'post',
         headers: {
-            "content-type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(newCoffee)
     });
