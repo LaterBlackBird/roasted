@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 // const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Coffee } = require('../../db/models');
+const { Coffee, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -20,12 +20,13 @@ const validateCoffee = [
         .isLength({ min: 6 })
         .withMessage('Please provide a description.'),
     handleValidationErrors
-
 ];
 
 // Get all coffees
 router.get('/', asyncHandler(async (req, res) => {
-    const allCoffees = await Coffee.findAll();
+    const allCoffees = await Coffee.findAll({
+        include: User
+    });
     return res.json({ allCoffees });
 }));
 
@@ -43,6 +44,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // Create a coffee
 router.post('/', validateCoffee, asyncHandler(async (req, res) => {
+    console.log(req.body.name)
     const { userId, name, description, imageUrl } = req.body;
     const newCoffee = await Coffee.create({
         userId,
@@ -50,7 +52,10 @@ router.post('/', validateCoffee, asyncHandler(async (req, res) => {
         description,
         imageUrl,
     });
-    res.json({ message: "Successful" });
+    const data = await Coffee.findByPk(newCoffee.id, {
+        include: User
+    });
+    return res.json(data);
 }));
 
 // Update a coffee

@@ -1,0 +1,69 @@
+#coffee-list-container{
+    background-color: #f7bd5e;
+    border-radius: 10px;
+    margin-top: 5em;
+}
+
+.fa-plus-square{
+    color: white;
+    margin: 2em 0 -.5em 2em;
+    font-size: 1.5rem;
+}
+
+.coffee-detail{
+    background-color: #ffcc7a;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px #382300;
+    margin: 2em;
+}
+
+.coffee-detail-info{
+    padding: 2em;
+    padding-bottom: .75em;
+    display: flex;
+}
+
+.user-options-container{
+    padding: 0 0 .75em 2em;
+    display: flex;
+}
+
+.coffee-img {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    margin-right: 2em;
+}
+
+.coffee-detail-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.coffee-detail-name{
+    font-size: 2rem;
+    color: #1f69ab;
+}
+
+.coffee-detail-description{
+    font-size: 1rem;
+}
+
+.coffee-detail-user{
+    font-size: .75rem;
+    margin-top: 2rem;
+    color: #382300;
+}
+
+.fa-edit, .fa-trash-alt{
+    font-size: .8rem;
+    margin: 0 .8rem;
+}
+
+.fa-trash-alt{
+    color: rgba(255, 0, 0, .7);
+    cursor: pointer;
+
+}
