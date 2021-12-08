@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import CoffeeList from "./components/CoffeeList";
 import AddCoffeeForm from "./components/AddCoffeeForm";
+import CoffeeEditForm from "./components/CoffeeEditForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/coffees/new">
             <AddCoffeeForm />
+          </Route>
+          <Route path="/coffees/:id">
+            <CoffeeEditForm />
           </Route>
         </Switch>
       )}

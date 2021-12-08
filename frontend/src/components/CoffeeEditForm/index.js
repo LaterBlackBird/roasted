@@ -1,37 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import { addNewCoffee } from "../../store/coffee";
-import './AddCoffeeForm.css'
+import { Redirect, useParams, useHistory } from "react-router-dom";
+import { editThisCoffee } from "../../store/coffee";
+import './CoffeeEditForm.css'
 
-function AddCoffeeForm() {
+function CoffeeEditForm() {
+    const { id } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const sessionUser = useSelector((state) => state.session.user);
+
     const [coffeeName, setCoffeeName] = useState("");
     const [description, setDescription] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
+    const sessionUser = useSelector((state) => state.session.user);
+    const coffeeData = useSelector((state) => state.coffee[id])
+
+    useEffect(() => {
+        setCoffeeName(coffeeData.name)
+        setDescription(coffeeData.description)
+        setImageUrl(coffeeData.imageUrl)
+    }, [coffeeData.name, coffeeData.description, coffeeData.imageUrl])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
 
-        const newCoffee = {
+        const revCoffee = {
+            coffeeId: id,
             userId: sessionUser.id,
             name: coffeeName,
             description,
             imageUrl
         }
+        setErrors([]);
+        const edited = await dispatch(editThisCoffee(revCoffee))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
 
-        const added = await dispatch(addNewCoffee(newCoffee))
-        .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        });
-
-        if (added) history.push('/coffees')
-
+        if (edited) history.push('/coffees')
     };
 
     const returnToList = () => {
@@ -41,9 +50,9 @@ function AddCoffeeForm() {
     if (!sessionUser) return <Redirect to="/" />;
 
     return (
-        <form id='add-coffee-form' onSubmit={handleSubmit}>
+        <form id='edit-coffee-form' onSubmit={handleSubmit}>
             <div>
-                <h1 id='add-text'>ADD A NEW HOT CUP OF JOY</h1>
+                <h1 id='edit-text'>NO USE CRYING OVER SPILT COFFEE</h1>
             </div>
             <label>
                 Name
@@ -73,8 +82,8 @@ function AddCoffeeForm() {
                     placeholder='https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg'
                 />
             </label>
-            <div className='add-buttons'>
-                <button type="submit">Submit</button>
+            <div className='edit-buttons'>
+                <button type="submit">Update</button>
                 <button onClick={returnToList}>Cancel</button>
             </div>
             <ul>
@@ -84,4 +93,4 @@ function AddCoffeeForm() {
     );
 }
 
-export default AddCoffeeForm;
+export default CoffeeEditForm;

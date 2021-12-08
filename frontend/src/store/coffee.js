@@ -5,6 +5,7 @@ import { csrfFetch } from './csrf';
 const GET_COFFEES = 'coffees/GET_COFFEES'
 const ADD_COFFEE = 'coffees/ADD_COFFEE'
 const DELETE_COFFEE = 'coffees/DELETE_COFFEE'
+const EDIT_COFFEE = 'coffees/EDIT_COFFEE'
 
 // Actions
 const loadCoffees = (list) => {
@@ -25,6 +26,13 @@ const removeCoffee = (coffeeId) => {
     return {
         type: DELETE_COFFEE,
         coffeeId
+    }
+}
+
+const editCoffee = (revCoffee) => {
+    return {
+        type: EDIT_COFFEE,
+        revCoffee
     }
 }
 
@@ -50,6 +58,7 @@ export const addNewCoffee = newCoffee => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addCoffee(data));
+        return data;
     }
 }
 
@@ -58,8 +67,22 @@ export const deleteThisCoffee = coffeeId => async (dispatch) => {
         method: 'DELETE',
     });
     if (response.ok) {
-        console.log(coffeeId);
         dispatch(removeCoffee(coffeeId));
+    }
+}
+
+export const editThisCoffee = revCoffee => async (dispatch) => {
+    const response = await csrfFetch(`/api/coffees/${revCoffee.coffeeId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(revCoffee)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(editCoffee(data));
+        return data;
     }
 }
 
@@ -90,6 +113,14 @@ const coffeeReducer = (state = { list: [] }, action) => {
                 coffee => coffee.id !== action.coffeeId
                 )
             return newState;
+        case EDIT_COFFEE:
+            const editState = {...state};
+            editState[action.revCoffee.id] = action.revCoffee;
+            editState.list = editState.list.filter(
+                coffee => coffee.id !== action.revCoffee.id
+            );
+            editState.list.push(action.revCoffee);
+            return editState;
         default:
             return state;
     }

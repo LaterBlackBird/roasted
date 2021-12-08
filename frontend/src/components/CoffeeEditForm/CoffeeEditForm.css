@@ -1,4 +1,4 @@
-#add-coffee-form {
+#edit-coffee-form {
   background-color: rgba(94, 175, 247, 0.7);
   height: 50%;
   width: 70%;
@@ -11,12 +11,12 @@
   border: 1px solid #1f69ab;
 }
 
-#add-coffee-form h1 {
+#edit-coffee-form h1 {
   color: #ffcc7a;
-  -webkit-text-stroke: .5px #382300;
+  -webkit-text-stroke: 0.5px #382300;
 }
 
-#add-coffee-form label {
+#edit-coffee-form label {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@
   margin: 1%;
 }
 
-#add-coffee-form input,
+#edit-coffee-form input,
 textarea {
   display: flex;
   flex-direction: column;
@@ -36,24 +36,24 @@ textarea {
   width: 35em;
 }
 
-#add-coffee-form textarea {
+#edit-coffee-form textarea {
   height: 5rem;
 }
 
-#add-coffee-form input::placeholder,
+#edit-coffee-form input::placeholder,
 ::placeholder {
   font-weight: lighter;
   color: lightgray;
 }
 
-#add-coffee-form li {
+#edit-coffee-form li {
   color: #382300;
 }
 
-.add-buttons {
+.edit-buttons {
   display: flex;
 }
 
-.add-buttons button{
+.edit-buttons button{
     margin: 0 1em;
   }
