@@ -56,7 +56,6 @@ router.post('/', validateCoffee, asyncHandler(async (req, res) => {
         include: User
     });
     return res.json(data);
-    // res.json( newCoffee );
 }));
 
 // Update a coffee
