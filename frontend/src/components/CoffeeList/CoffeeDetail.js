@@ -15,8 +15,6 @@ const CoffeeDetail = ({ coffee }) => {
     }
 
     let userOptions;
-    console.log(`session `, sessionUser.username);
-    console.log(`coffee `, coffee.User.username);
     if (sessionUser && sessionUser.username === coffee.User.username) {
         userOptions = (
             <div>
