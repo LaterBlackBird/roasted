@@ -64,4 +64,6 @@
 
 .fa-trash-alt{
     color: rgba(255, 0, 0, .7);
+    cursor: pointer;
+
 }

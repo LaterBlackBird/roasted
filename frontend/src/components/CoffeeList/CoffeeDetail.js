@@ -1,18 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteThisCoffee } from '../../store/coffee';
+
 import './CoffeeList.css'
 
 
 const CoffeeDetail = ({ coffee }) => {
 
     const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
+
+    const deleteCoffee = () => {
+        dispatch(deleteThisCoffee(coffee.id))
+    }
 
     let userOptions;
     if (sessionUser && sessionUser.username === coffee.User.username) {
         userOptions = (
             <div>
-                <Link to={`/coffees/${coffee.id}`}><i class ="far fa-edit"> <span> Edit</span></i></Link>
-                <i class ="far fa-trash-alt"> <span> Delete</span></i>
+                <Link to={`/coffees/${coffee.id}`}><i className="far fa-edit"> <span> Edit</span></i></Link>
+                <i className="far fa-trash-alt" onClick={deleteCoffee}> <span> Delete</span></i>
             </div>
         )
     }

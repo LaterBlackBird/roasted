@@ -10,17 +10,18 @@ import './CoffeeList.css'
 const CoffeeList = () => {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAllCoffees())
-    }, [dispatch])
-
     const coffeeArr = useSelector(state => {
         return state.coffee.list;
     })
 
+    useEffect(() => {
+        dispatch(getAllCoffees())
+    }, [dispatch, coffeeArr])
+
+
     return (
         <div id='coffee-list-container'>
-            <Link to='/coffees/new'><i class="far fa-plus-square"><span> ADD A COFFEE</span></i></Link>
+            <Link to='/coffees/new'><i className="far fa-plus-square"><span> ADD A COFFEE</span></i></Link>
             {coffeeArr.map(coffee => (
                 <CoffeeDetail key={coffee.id} coffee={coffee} />
             ))}

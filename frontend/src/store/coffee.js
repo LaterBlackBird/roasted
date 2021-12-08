@@ -4,7 +4,7 @@ import { csrfFetch } from './csrf';
 // To help prevent errors
 const GET_COFFEES = 'coffees/GET_COFFEES'
 const ADD_COFFEE = 'coffees/ADD_COFFEE'
-
+const DELETE_COFFEE = 'coffees/DELETE_COFFEE'
 
 // Actions
 const loadCoffees = (list) => {
@@ -21,6 +21,13 @@ const addCoffee = (newCoffee) => {
     }
 }
 
+const removeCoffee = (coffeeId) => {
+    return {
+        type: DELETE_COFFEE,
+        coffeeId
+    }
+}
+
 
 // Thunk action creators
 // Retrieve information from the database
@@ -34,7 +41,7 @@ export const getAllCoffees = () => async (dispatch) => {
 
 export const addNewCoffee = newCoffee => async (dispatch) => {
     const response = await csrfFetch('/api/coffees', {
-        method: 'post',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -43,6 +50,15 @@ export const addNewCoffee = newCoffee => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addCoffee(data));
+    }
+}
+
+export const deleteThisCoffee = coffeeId => async (dispatch) => {
+    const response = await csrfFetch(`/api/coffees/${coffeeId}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        dispatch(removeCoffee(coffeeId));
     }
 }
 
@@ -78,6 +94,13 @@ const coffeeReducer = (state = { list: [] }, action) => {
                     ...action.newCoffee
                 }
             };
+        case DELETE_COFFEE:
+            const newState = { ...state };
+            delete newState[action.coffeeId];
+            newState.list.filter(
+                coffee => coffee.id !== action.coffeeId
+                )
+            return newState;
         default:
             return state;
     }
