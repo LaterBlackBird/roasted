@@ -5,10 +5,12 @@ const { User } = require('../../db/models');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const coffeesRouter = require('./coffees.js')
+const checkinRouter = require('./checkins.js')
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/coffees', coffeesRouter);
+router.use('/checkins', coffeesRouter);
 
 
 router.get('/restore-user', restoreUser,(req, res) => {
