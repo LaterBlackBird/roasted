@@ -1,41 +1,26 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { deleteThisCoffee } from '../../store/coffee';
-
+// import { useSelector, useDispatch } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import './CheckinList.css'
 
 
-const CheckinDetail = ({ coffee }) => {
+const CheckinDetail = ({ checkin }) => {
 
-    const sessionUser = useSelector(state => state.session.user);
-    const dispatch = useDispatch();
+    // const sessionUser = useSelector(state => state.session.user);
+    // const dispatch = useDispatch();
 
-    const deleteCoffee = () => {
-        dispatch(deleteThisCoffee(coffee.id))
-    }
-
-    let userOptions;
-    if (sessionUser && sessionUser.username === coffee.User.username) {
-        userOptions = (
-            <div>
-                <Link to={`/coffees/${coffee.id}`}><i className="far fa-edit"> <span> Edit</span></i></Link>
-                <i className="far fa-trash-alt" onClick={deleteCoffee}> <span> Delete</span></i>
-            </div>
-        )
-    }
+    const checkinCreated = new Date(checkin.createdAt);
+    const checkinDate = checkinCreated.toDateString();
 
     return (
-        <div className='coffee-detail'>
-            <div className='coffee-detail-info'>
-                <img className='coffee-img' src={coffee.imageUrl ? coffee.imageUrl : "https://res.cloudinary.com/dd1ndszow/image/upload/v1638898746/Coffee-Default_to4zq1.png"} alt="default coffee cup" />
-                <div className='coffee-detail-text'>
-                    <span className='coffee-detail-name'>{coffee.name}</span>
-                    <span className='coffee-detail-description'>{coffee.description}</span>
-                    <span className='coffee-detail-user'>Created by {coffee.User.username}</span>
+        <div className='checkin-detail'>
+            <div className='checkin-detail-info'>
+                <div>
+                    <i className="fas fa-map-pin"></i>
                 </div>
-            </div>
-            <div className='user-options-container'>
-                {userOptions}
+                <div>
+                    <p> {`${checkin.User.username} is drinking a ${checkin.Coffee.name} at ${checkin.location}`}</p>
+                    <p className='checkin-date'> {checkinDate}</p>
+                </div>
             </div>
         </div>
     )

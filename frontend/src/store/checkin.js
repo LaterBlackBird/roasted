@@ -6,10 +6,10 @@ const GET_CHECKINS = 'coffees/GET_CHECKINS'
 const ADD_CHECKIN = 'coffees/ADD_CHECKIN'
 
 // Actions
-const loadCheckins = (list) => {
+const loadCheckins = (checkins) => {
     return {
         type: GET_CHECKINS,
-        list
+        checkins
     }
 }
 
@@ -27,8 +27,9 @@ export const getAllCheckins = () => async (dispatch) => {
     const response = await csrfFetch('/api/checkins');
     if (response.ok) {
         const data = await response.json();
+        console.log(data);
         dispatch(loadCheckins(data));
-        console.log(`this is return`, data)
+
     }
 }
 
@@ -51,22 +52,22 @@ export const getAllCheckins = () => async (dispatch) => {
 
 // Reducer
 // Replace state with database information from thunk
-const checkinReducer = (state = { list: [] }, action) => {
+const checkinReducer = (state = { checkinArray: [] }, action) => {
     switch (action.type) {
         case GET_CHECKINS:
             const allCheckins = {};
-            // action.list.allCoffees.forEach(coffee => {
-            //     allCheckins[coffee.id] = coffee;
-            // });
+            action.checkins.forEach(checkin => {
+                allCheckins[checkin.id] = checkin;
+            });
             return {
                 ...allCheckins,
                 ...state,
-                list: action.list.allCheckins
+                checkinArray: action.checkins
             };
         case ADD_CHECKIN:
             const prevState = {...state};
             prevState[action.newCoffee.id]=action.newCoffee;
-            prevState.list.push(action.newCoffee);
+            prevState.checkinArray.push(action.newCoffee);
             return prevState;
         default:
             return state;
