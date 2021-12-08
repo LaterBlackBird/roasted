@@ -58,6 +58,7 @@ export const addNewCoffee = newCoffee => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addCoffee(data));
+        return data;
     }
 }
 

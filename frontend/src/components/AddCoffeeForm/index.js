@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { addNewCoffee } from "../../store/coffee";
 import './AddCoffeeForm.css'
 
 function AddCoffeeForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const [coffeeName, setCoffeeName] = useState("");
     const [description, setDescription] = useState("");
@@ -14,8 +15,9 @@ function AddCoffeeForm() {
 
     if (!sessionUser) return <Redirect to="/" />;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([]);
 
         const newCoffee = {
             userId: sessionUser.id,
@@ -23,14 +25,20 @@ function AddCoffeeForm() {
             description,
             imageUrl
         }
-        setErrors([]);
-        return dispatch(addNewCoffee(newCoffee))
+
+        const added = await dispatch(addNewCoffee(newCoffee))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
 
+        if (added) history.push('/coffees')
+
     };
+
+    const returnToList = () => {
+        history.push('/coffees')
+    }
 
 
     return (
@@ -66,7 +74,10 @@ function AddCoffeeForm() {
                     placeholder='https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg'
                 />
             </label>
-            <button type="submit">Submit</button>
+            <div className='add-buttons'>
+                <button type="submit">Submit</button>
+                <button onClick={returnToList}>Cancel</button>
+            </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>

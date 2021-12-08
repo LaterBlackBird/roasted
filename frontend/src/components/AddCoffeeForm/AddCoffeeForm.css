@@ -49,3 +49,11 @@ textarea {
 #add-coffee-form li {
   color: #382300;
 }
+
+.add-buttons {
+  display: flex;
+}
+
+.add-buttons button{
+    margin: 0 1em;
+  }

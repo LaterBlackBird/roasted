@@ -1,0 +1,59 @@
+#edit-coffee-form {
+  background-color: rgba(94, 175, 247, 0.7);
+  height: 50%;
+  width: 70%;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #1f69ab;
+}
+
+#edit-coffee-form h1 {
+  color: #ffcc7a;
+  -webkit-text-stroke: 0.5px #382300;
+}
+
+#edit-coffee-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1%;
+  margin: 1%;
+}
+
+#edit-coffee-form input,
+textarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px grey solid;
+  height: 1.5rem;
+  width: 35em;
+}
+
+#edit-coffee-form textarea {
+  height: 5rem;
+}
+
+#edit-coffee-form input::placeholder,
+::placeholder {
+  font-weight: lighter;
+  color: lightgray;
+}
+
+#edit-coffee-form li {
+  color: #382300;
+}
+
+.edit-buttons {
+  display: flex;
+}
+
+.edit-buttons button{
+    margin: 0 1em;
+  }

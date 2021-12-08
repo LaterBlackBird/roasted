@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import { editThisCoffee } from "../../store/coffee";
 import './CoffeeEditForm.css'
 
 function CoffeeEditForm() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [coffeeName, setCoffeeName] = useState("");
     const [description, setDescription] = useState("");
@@ -40,12 +41,16 @@ function CoffeeEditForm() {
             });
     };
 
+    const returnToList = () => {
+        history.push('/coffees')
+    }
+
     if (!sessionUser) return <Redirect to="/" />;
 
     return (
-        <form id='add-coffee-form' onSubmit={handleSubmit}>
+        <form id='edit-coffee-form' onSubmit={handleSubmit}>
             <div>
-                <h1 id='add-text'>ADD A NEW HOT CUP OF JOY</h1>
+                <h1 id='edit-text'>NO USE CRYING OVER SPILT COFFEE</h1>
             </div>
             <label>
                 Name
@@ -75,7 +80,10 @@ function CoffeeEditForm() {
                     placeholder='https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg'
                 />
             </label>
-            <button type="submit">Submit</button>
+            <div className='edit-buttons'>
+                <button type="submit">Update</button>
+                <button onClick={returnToList}>Cancel</button>
+            </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
