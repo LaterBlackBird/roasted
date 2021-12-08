@@ -49,6 +49,7 @@ export const addNewCoffee = newCoffee => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
+        console.log(data);
         dispatch(addCoffee(data));
     }
 }
@@ -78,22 +79,10 @@ const coffeeReducer = (state = { list: [] }, action) => {
                 list: action.list.allCoffees
             };
         case ADD_COFFEE:
-            if (!state[action.newCoffee.id]) {
-                const newState = {
-                    ...state,
-                    [action.newCoffee.id]: action.newCoffee
-                };
-                const newCoffeeList = newState.list.map(id => newState[id]);
-                newCoffeeList.push(action.newCoffee);
-                return newState;
-            }
-            return {
-                ...state,
-                [action.allCoffee.id]: {
-                    ...state[action.newCoffee.id],
-                    ...action.newCoffee
-                }
-            };
+            const prevState = {...state};
+            prevState[action.newCoffee.id]=action.newCoffee;
+            prevState.list.push(action.newCoffee);
+            return prevState;
         case DELETE_COFFEE:
             const newState = { ...state };
             delete newState[action.coffeeId];

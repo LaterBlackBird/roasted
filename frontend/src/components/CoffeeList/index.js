@@ -16,7 +16,7 @@ const CoffeeList = () => {
 
     useEffect(() => {
         dispatch(getAllCoffees())
-    }, [dispatch, coffeeArr])
+    }, [dispatch])
 
 
     return (

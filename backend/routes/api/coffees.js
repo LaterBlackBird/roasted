@@ -52,7 +52,11 @@ router.post('/', validateCoffee, asyncHandler(async (req, res) => {
         description,
         imageUrl,
     });
-    res.json({ newCoffee });
+    const data = await Coffee.findByPk(newCoffee.id, {
+        include: User
+    });
+    return res.json(data);
+    // res.json( newCoffee );
 }));
 
 // Update a coffee
