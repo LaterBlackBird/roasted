@@ -22,7 +22,7 @@ const CoffeeList = () => {
 
     return (
         <div id='coffee-list-container'>
-            {sessionUser && <Link to='/coffees/new'><i className="far fa-plus-square"><span> ADD A COFFEE</span></i></Link>}
+            {sessionUser && <Link className='add-action' to='/coffees/new'><i className="far fa-plus-square"><span> ADD A COFFEE</span></i></Link>}
             {coffeeArr.map(coffee => (
                 <CoffeeDetail key={coffee.id} coffee={coffee} />
             ))}

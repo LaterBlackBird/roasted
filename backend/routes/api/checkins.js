@@ -10,8 +10,8 @@ const validateCheckin = [
     check('location')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a location')
-        .isLength({ min: 6 })
-        .withMessage('Location must be at least 6 characters.')
+        .isLength({ min: 12 })
+        .withMessage(`Don't forget your location. Coffee Shop and City should be at least 6 characters each`)
         .isLength({ max: 60 })
         .withMessage('Location cannot be more than 60 characters.'),
     handleValidationErrors
