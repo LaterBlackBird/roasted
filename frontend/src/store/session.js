@@ -17,8 +17,6 @@ const removeUser = () => {
 };
 
 
-
-
 // thunk action creators
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
@@ -88,6 +86,13 @@ export const signupUser = (user) => async (dispatch) => {
   };
 };
 
+export const getAUser = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/users/${id}`)
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  };
+};
 
 
 

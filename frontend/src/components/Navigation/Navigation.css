@@ -3,7 +3,7 @@
   display: inline-flex;
 }
 
-#navbar a{
+#navbar a {
   text-decoration: none;
 }
 
@@ -69,4 +69,38 @@ button:hover {
 .active {
   background-color: #1f69ab;
   color: white;
+}
+
+.profile-dropdown {
+  padding: 0;
+  background: hsl(0 0% 100% / 0.1);
+  color: white;
+  list-style-type: none;
+  text-align: right;
+  position: absolute;
+  inset: 15% 0 0 88%;
+  height: fit-content;
+  backdrop-filter: blur(1rem);
+  border-radius: 15px 0 0 15px;
+}
+
+.profile-dropdown li {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+#logout-button{
+  box-sizing: border-box;
+  border: 1.5px solid white;
+  color: white;
+  height: 2rem;
+  line-height: .1rem;
+}
+
+#logout-button:hover{
+  background-color: rgba(200, 0,0 , .7);
+}
+
+#stats{
+  text-decoration: underline;
 }
