@@ -17,8 +17,9 @@ const validateCoffee = [
         .withMessage('Name cannot be more than 30 characters.'),
     check('description')
         .exists({ checkFalsy: true })
+        .withMessage('Please provide a description.')
         .isLength({ min: 6 })
-        .withMessage('Please provide a description.'),
+        .withMessage('Please provide a description longer than 6 characters.'),
     handleValidationErrors
 ];
 

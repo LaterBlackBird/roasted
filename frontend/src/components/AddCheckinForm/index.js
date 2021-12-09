@@ -10,7 +10,7 @@ function AddCheckinForm() {
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const coffeeList = useSelector((state) => state.coffee.list)
-    const [coffeeName, setCoffeeName] = useState("");
+    const [coffeeName, setCoffeeName] = useState("Honeymoon Mocha");
     const [establishment, setEstablishment] = useState("");
     const [city, setCity] = useState("");
     const [errors, setErrors] = useState([]);
@@ -61,10 +61,9 @@ function AddCheckinForm() {
                 <select
                     value={coffeeName}
                     onChange={(e) => setCoffeeName(e.target.value)}
-                    placeholder='Robusta Skinny'
                     required
                 >
-                    <option selected>Please Select One</option>
+                    <option disabled>Please Select One</option>
                     {coffeeList.map(coffee => {
                         return <option key={coffee.id} value={coffee.name}>{coffee.name}</option>
                     })}
@@ -87,6 +86,7 @@ function AddCheckinForm() {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder='Liquid Gold'
+                    required
                 />
             </label>
             <div className='add-buttons'>
