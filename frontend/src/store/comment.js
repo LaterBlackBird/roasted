@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 // Action types
 // To help prevent errors
 const GET_COMMENTS = 'coffees/GET_COMMENTS'
-// const ADD_COFFEE = 'coffees/ADD_COFFEE'
+const ADD_COMMENT = 'coffees/ADD_COMMENT'
 // const DELETE_COFFEE = 'coffees/DELETE_COFFEE'
 // const EDIT_COFFEE = 'coffees/EDIT_COFFEE'
 
@@ -15,12 +15,12 @@ const loadComments = (comments) => {
     }
 }
 
-// const addCoffee = (newCoffee) => {
-//     return {
-//         type: ADD_COFFEE,
-//         newCoffee
-//     }
-// }
+const addComment = (newComment) => {
+    return {
+        type: ADD_COMMENT,
+        newComment
+    }
+}
 
 // const removeCoffee = (coffeeId) => {
 //     return {
@@ -47,20 +47,20 @@ export const getAllComments = () => async (dispatch) => {
     }
 }
 
-// export const addNewCoffee = newCoffee => async (dispatch) => {
-//     const response = await csrfFetch('/api/coffees', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(newCoffee)
-//     });
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(addCoffee(data));
-//         return data;
-//     }
-// }
+export const addNewComment = newComment => async (dispatch) => {
+    const response = await csrfFetch('/api/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newComment)
+    });
+    if (response.ok) {
+        const comment = await response.json();
+        dispatch(addComment(comment));
+        return comment;
+    }
+}
 
 // export const deleteThisCoffee = coffeeId => async (dispatch) => {
 //     const response = await csrfFetch(`/api/coffees/${coffeeId}`, {
@@ -106,11 +106,12 @@ const commentReducer = (state = { commentArray: [] }, action) => {
                 ...state,
                 commentArray: sortList(action.comments)
             };
-        // case ADD_COFFEE:
-        //     const prevState = {...state};
-        //     prevState[action.newCoffee.id]=action.newCoffee;
-        //     prevState.list.push(action.newCoffee);
-        //     return prevState;
+        case ADD_COMMENT:
+            const prevState = {...state};
+            prevState[action.newComment.id]=action.newComment;
+            prevState.commentArray.push(action.newComment);
+            prevState.commentArray = sortList(prevState.commentArray)
+            return prevState;
         // case DELETE_COFFEE:
         //     const newState = { ...state };
         //     delete newState[action.coffeeId];

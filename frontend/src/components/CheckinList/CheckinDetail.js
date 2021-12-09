@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './CheckinList.css'
+import { addNewComment } from '../../store/comment';
 import Comment from '../Comment'
+import './CheckinList.css'
 
 const CheckinDetail = ({ checkin }) => {
 
     const dispatch = useDispatch();
     const [showCommentInput, setShowCommentInput] = useState(false);
-    const [newComment, setNewComment] = useState('');
+    const [comment, setComment] = useState('');
+    const [errors, setErrors] = useState([]);
+
     const sessionUser = useSelector(state => state.session.user);
     const commentArray = useSelector(state => state.comment.commentArray)
     const filteredComments = commentArray.filter(comment => comment.checkinId === checkin.id)
@@ -17,8 +20,28 @@ const CheckinDetail = ({ checkin }) => {
     const checkinCreated = new Date(checkin.createdAt);
     const checkinDate = checkinCreated.toDateString();
 
-    const addComment = () => {
-        console.log('add ', newComment)
+    const addComment = async () => {
+        setErrors([]);
+
+        const newComment = {
+            userId: sessionUser.id,
+            checkinId: checkin.id,
+            comment
+        }
+
+        const added = await dispatch(addNewComment(newComment))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) {
+                    setErrors(data.errors);
+                    setComment('');
+                }
+            });
+
+        if (added) {
+            setComment('');
+            setShowCommentInput(!showCommentInput);
+        }
     }
 
     return (
@@ -38,7 +61,7 @@ const CheckinDetail = ({ checkin }) => {
                 </div>
                 {showCommentInput &&
                     <div>
-                        <textarea value={newComment} onChange={(e) => setNewComment(e.target.value)} cols="30" rows="10"></textarea>
+                        <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
                         <i className="fas fa-plus" onClick={addComment}></i>
                     </div>
                 }

@@ -16,7 +16,6 @@ body {
 }
 
 #root{
-    /* height: 100vh; */
     margin: 0;
     width: 90%;
     display: flex;

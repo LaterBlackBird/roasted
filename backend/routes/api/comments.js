@@ -9,7 +9,7 @@ const router = express.Router();
 const validateComment = [
     check('comment')
         .exists({ checkFalsy: true })
-        .withMessage('Please enter a comment.')
+        .withMessage('There was no comment to add.  Please enter one here')
         .isLength({ min: 3 })
         .withMessage('You can do better than that, 3 characters min.'),
     handleValidationErrors
