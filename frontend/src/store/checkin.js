@@ -46,7 +46,11 @@ export const addNewCheckin = newCheckin => async (dispatch) => {
     }
 }
 
-
+const sortList = (list) => {
+  return list.sort((checkinA, checkinB) => {
+    return checkinB.id - checkinA.id;
+  });
+};
 
 // Reducer
 // Replace state with database information from thunk
@@ -60,7 +64,7 @@ const checkinReducer = (state = { checkinArray: [] }, action) => {
             return {
                 ...allCheckins,
                 ...state,
-                checkinArray: action.checkins
+                checkinArray: sortList(action.checkins)
             };
         case ADD_CHECKIN:
             const prevState = {...state};
