@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -17,6 +17,7 @@ function Navigation({ isLoaded }) {
       </div>
     </a>
   )
+  const location = useLocation();
 
   if (sessionUser) {
     sessionLinks = (
@@ -33,7 +34,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <div id='navbar'>
-      {sessionUser && smallLogo}
+      {location.pathname !== '/' && smallLogo}
       <ul className='navbar-links'>
         <li>
           <NavLink className='navlink' exact to="/">Home</NavLink>
