@@ -4,7 +4,7 @@ import { csrfFetch } from './csrf';
 // To help prevent errors
 const GET_COMMENTS = 'coffees/GET_COMMENTS'
 const ADD_COMMENT = 'coffees/ADD_COMMENT'
-// const DELETE_COFFEE = 'coffees/DELETE_COFFEE'
+const DELETE_COMMENT = 'coffees/DELETE_COMMENT'
 // const EDIT_COFFEE = 'coffees/EDIT_COFFEE'
 
 // Actions
@@ -22,12 +22,12 @@ const addComment = (newComment) => {
     }
 }
 
-// const removeCoffee = (coffeeId) => {
-//     return {
-//         type: DELETE_COFFEE,
-//         coffeeId
-//     }
-// }
+const deleteComment = (commentId) => {
+    return {
+        type: DELETE_COMMENT,
+        commentId
+    }
+}
 
 // const editCoffee = (revCoffee) => {
 //     return {
@@ -62,14 +62,14 @@ export const addNewComment = newComment => async (dispatch) => {
     }
 }
 
-// export const deleteThisCoffee = coffeeId => async (dispatch) => {
-//     const response = await csrfFetch(`/api/coffees/${coffeeId}`, {
-//         method: 'DELETE',
-//     });
-//     if (response.ok) {
-//         dispatch(removeCoffee(coffeeId));
-//     }
-// }
+export const deleteThisComment = commentId => async (dispatch) => {
+    const response = await csrfFetch(`/api/comments/${commentId}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        dispatch(deleteComment(commentId));
+    }
+}
 
 // export const editThisCoffee = revCoffee => async (dispatch) => {
 //     const response = await csrfFetch(`/api/coffees/${revCoffee.coffeeId}`, {
@@ -112,13 +112,13 @@ const commentReducer = (state = { commentArray: [] }, action) => {
             prevState.commentArray.push(action.newComment);
             prevState.commentArray = sortList(prevState.commentArray)
             return prevState;
-        // case DELETE_COFFEE:
-        //     const newState = { ...state };
-        //     delete newState[action.coffeeId];
-        //     newState.list = newState.list.filter(
-        //         coffee => coffee.id !== action.coffeeId
-        //         )
-        //     return newState;
+        case DELETE_COMMENT:
+            const newState = { ...state };
+            delete newState[action.commentId];
+            newState.commentArray = newState.commentArray.filter(
+                comment => comment.id !== action.commentId
+                )
+            return newState;
         // case EDIT_COFFEE:
         //     const editState = {...state};
         //     editState[action.revCoffee.id] = action.revCoffee;
