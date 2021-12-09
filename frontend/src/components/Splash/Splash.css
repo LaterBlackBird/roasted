@@ -44,7 +44,7 @@
 }
 
 .feature-list-container{
-    background-color: #f7bd5e;
+    background: linear-gradient(#ffcc7a, #f7bd5e);
     margin: 10% 10% 0 10%;
     border-radius: 5px;
 }
@@ -57,7 +57,7 @@
 }
 
 .feature-box p{
-    background-color: #ffcc7a;
+    background-color: white;
     margin: 10%;
     margin-top: 0;
     padding: 10%;
