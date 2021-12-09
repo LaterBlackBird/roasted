@@ -6,10 +6,14 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-const validateCoffee = [
+const validateCheckin = [
     check('location')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a location'),
+        .withMessage('Please provide a location')
+        .isLength({ min: 6 })
+        .withMessage('Location must be at least 6 characters.')
+        .isLength({ max: 60 })
+        .withMessage('Location cannot be more than 60 characters.'),
     handleValidationErrors
 ];
 
@@ -22,16 +26,15 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 // Create a check-in
-router.post('/', validateCoffee, asyncHandler(async (req, res) => {
-    const { userId, name, description, imageUrl } = req.body;
-    const newCoffee = await Coffee.create({
+router.post('/', validateCheckin, asyncHandler(async (req, res) => {
+    const { userId, drinkId, location } = req.body;
+    const newCheckin = await Checkin.create({
         userId,
-        name,
-        description,
-        imageUrl,
+        drinkId,
+        location,
     });
-    const data = await Coffee.findByPk(newCoffee.id, {
-        include: User
+    const data = await Checkin.findByPk(newCheckin.id, {
+        include: [User, Coffee]
     });
     return res.json(data);
 }));
