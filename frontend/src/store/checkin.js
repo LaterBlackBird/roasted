@@ -27,7 +27,6 @@ export const getAllCheckins = () => async (dispatch) => {
     const response = await csrfFetch('/api/checkins');
     if (response.ok) {
         const data = await response.json();
-        console.log(data);
         dispatch(loadCheckins(data));
 
     }

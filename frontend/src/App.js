@@ -9,6 +9,7 @@ import CoffeeList from "./components/CoffeeList";
 import AddCoffeeForm from "./components/AddCoffeeForm";
 import CoffeeEditForm from "./components/CoffeeEditForm";
 import CheckinList from "./components/CheckinList";
+import AddCheckinForm from "./components/AddCheckinForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,8 +39,11 @@ function App() {
           <Route path="/coffees/:id">
             <CoffeeEditForm />
           </Route>
-          <Route path="/checkins">
+          <Route exact path="/checkins">
             <CheckinList />
+          </Route>
+          <Route path="/checkins/new">
+            <AddCheckinForm />
           </Route>
         </Switch>
       )}
