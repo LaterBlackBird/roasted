@@ -13,10 +13,27 @@
 
 }
 
+.checkin-card {
+    display: flex;
+    flex-direction: column;
+
+}
+
 .checkin-detail-info{
     padding: 2em;
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+}
+
+.checkin-detail-info-sub{
+    display: flex;
+    align-items: center;
+}
+
+.checkin-detail-info p{
+    margin: .5em;
 }
 
 .checkin-date{
@@ -25,7 +42,11 @@
 }
 
 .fa-map-pin{
-    font-size: 2em;
     color: #1f69ab;
     margin: 0 1em 0 .5em;
+}
+
+.fa-comments{
+    margin: 0 1em;
+    align-self: right;
 }
