@@ -7,8 +7,16 @@
 
 .fa-plus-square{
     color: white;
-    margin: 2em 0 -.5em 2em;
+    margin: 2em 0 -.5em .5em;
     font-size: 1.5rem;
+}
+
+.add-action{
+    background-color: #5eaff7;
+    line-height: 1.5rem;
+    height: 2em;
+    padding: 1.5em 1em 1em 1em;
+    border-radius: 0 10px 10px 0;
 }
 
 .coffee-detail{
@@ -67,5 +75,4 @@
 .fa-trash-alt{
     color: rgba(255, 0, 0, .7);
     cursor: pointer;
-
 }

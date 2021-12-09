@@ -22,7 +22,7 @@ const CheckinList = () => {
 
     return (
         <div id='checkin-list-container'>
-            {sessionUser && <Link to='/checkins/new'><i className="far fa-plus-square"><span> ADD A CHECKIN</span></i></Link>}
+            {sessionUser && <Link className='add-action' to='/checkins/new'><i className="far fa-plus-square"><span> ADD A CHECKIN</span></i></Link>}
             {checkinArr.map(checkin => (
                 <CheckinDetail key={checkin.id} checkin={checkin} />
             ))}
