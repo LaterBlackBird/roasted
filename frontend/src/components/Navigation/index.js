@@ -10,10 +10,12 @@ function Navigation({ isLoaded }) {
 
   let sessionLinks;
   let smallLogo = (
-    <div id='small-nav-logo'>
-      <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png" alt="logo" />
-      <h2 id='nav-name'>ROASTED</h2>
-    </div>
+    <a href="/">
+      <div id='small-nav-logo'>
+        <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png" alt="logo" />
+        <h2 id='nav-name'>ROASTED</h2>
+      </div>
+    </a>
   )
 
   if (sessionUser) {
