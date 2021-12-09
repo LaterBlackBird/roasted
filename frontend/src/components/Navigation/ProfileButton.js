@@ -15,7 +15,6 @@ function ProfileButton({ user }) {
     setShowMenu(true);
 
     const userStats = await dispatch(sessionActions.getAUser(sessionUser.id))
-    console.log(userStats)
     setNumOfCoffees(userStats.Coffees.length)
     setNumOfCheckins(userStats.Checkins.length)
   };
