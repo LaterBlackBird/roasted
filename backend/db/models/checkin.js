@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Checkin.belongsTo(models.User, { foreignKey: 'userId' })
     Checkin.belongsTo(models.Coffee, { foreignKey: 'drinkId' })
+    Checkin.hasMany(models.Comment, { foreignKey: 'checkinId'});
   };
   return Checkin;
 };
