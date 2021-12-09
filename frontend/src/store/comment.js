@@ -5,7 +5,7 @@ import { csrfFetch } from './csrf';
 const GET_COMMENTS = 'coffees/GET_COMMENTS'
 const ADD_COMMENT = 'coffees/ADD_COMMENT'
 const DELETE_COMMENT = 'coffees/DELETE_COMMENT'
-// const EDIT_COFFEE = 'coffees/EDIT_COFFEE'
+const EDIT_COMMENT = 'coffees/EDIT_COMMENT'
 
 // Actions
 const loadComments = (comments) => {
@@ -29,12 +29,12 @@ const deleteComment = (commentId) => {
     }
 }
 
-// const editCoffee = (revCoffee) => {
-//     return {
-//         type: EDIT_COFFEE,
-//         revCoffee
-//     }
-// }
+const editComment = (editedCommentt) => {
+    return {
+        type: EDIT_COMMENT,
+        editedCommentt
+    }
+}
 
 
 // Thunk action creators
@@ -71,20 +71,20 @@ export const deleteThisComment = commentId => async (dispatch) => {
     }
 }
 
-// export const editThisCoffee = revCoffee => async (dispatch) => {
-//     const response = await csrfFetch(`/api/coffees/${revCoffee.coffeeId}`, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(revCoffee)
-//     });
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(editCoffee(data));
-//         return data;
-//     }
-// }
+export const editThisComment = editedComment => async (dispatch) => {
+    const response = await csrfFetch(`/api/coffees/${editedComment.coffeeId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedComment)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(editComment(data));
+        return data;
+    }
+}
 
 const sortList = (list) => {
     return list.sort((commentA, commentB) => {
@@ -119,7 +119,7 @@ const commentReducer = (state = { commentArray: [] }, action) => {
                 comment => comment.id !== action.commentId
                 )
             return newState;
-        // case EDIT_COFFEE:
+        // case EDIT_COMMENT:
         //     const editState = {...state};
         //     editState[action.revCoffee.id] = action.revCoffee;
         //     editState.list = editState.list.filter(

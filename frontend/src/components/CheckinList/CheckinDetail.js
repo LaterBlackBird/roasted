@@ -67,7 +67,7 @@ const CheckinDetail = ({ checkin }) => {
                 }
                 <div>
                     {filteredComments.map(comment => (
-                        <Comment key={comment.id} comment={comment} />
+                        <Comment key={comment.id} comment={comment} checkinId={checkin.id}/>
                     ))}
                 </div>
             </div>
