@@ -1,8 +1,8 @@
 #coffee-list-container{
-    background-color: #f7bd5e;
+    background: linear-gradient(#ffcc7a, #f7bd5e);
     border-radius: 10px;
     margin-top: 5em;
-    width: 70%;
+    width: 60%;
 }
 
 .fa-plus-square{
@@ -12,7 +12,7 @@
 }
 
 .coffee-detail{
-    background-color: #ffcc7a;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 3px 3px 10px #382300;
     margin: 2em;

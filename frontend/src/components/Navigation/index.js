@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -10,11 +10,14 @@ function Navigation({ isLoaded }) {
 
   let sessionLinks;
   let smallLogo = (
-    <div id='small-nav-logo'>
-      <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png" alt="logo" />
-      <h2 id='nav-name'>ROASTED</h2>
-    </div>
+    <a href="/">
+      <div id='small-nav-logo'>
+        <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png" alt="logo" />
+        <h2 id='nav-name'>ROASTED</h2>
+      </div>
+    </a>
   )
+  const location = useLocation();
 
   if (sessionUser) {
     sessionLinks = (
@@ -31,7 +34,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <div id='navbar'>
-      {sessionUser && smallLogo}
+      {location.pathname !== '/' && smallLogo}
       <ul className='navbar-links'>
         <li>
           <NavLink className='navlink' exact to="/">Home</NavLink>

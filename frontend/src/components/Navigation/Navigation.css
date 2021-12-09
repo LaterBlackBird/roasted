@@ -2,6 +2,11 @@
   width: 90vw;
   display: inline-flex;
 }
+
+#navbar a{
+  text-decoration: none;
+}
+
 #small-nav-logo {
   position: left;
   width: fit-content;
