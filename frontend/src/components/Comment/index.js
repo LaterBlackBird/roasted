@@ -1,18 +1,18 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 const Comment = ({comment}) => {
 
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
 
     let userOptions;
-    if (sessionUser && sessionUser.username === comment.User.username) {
-        userOptions = (
-            <div>
-                <Link ><i className="far fa-edit"> <span> Edit</span></i></Link>
-                <i className="far fa-trash-alt" > <span> Delete</span></i>
-            </div>
-        )
-    }
+    // if (sessionUser && sessionUser.username === comment.User.username) {
+    //     userOptions = (
+    //         <div>
+    //             <Link ><i className="far fa-edit"> <span> Edit</span></i></Link>
+    //             <i className="far fa-trash-alt" > <span> Delete</span></i>
+    //         </div>
+    //     )
+    // }
 
     return (
         <div>
