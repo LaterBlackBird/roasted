@@ -23,15 +23,14 @@ router.get('/', asyncHandler(async (req, res) => {
 
 // Create a check-in
 router.post('/', validateCheckin, asyncHandler(async (req, res) => {
-    const { userId, name, description, imageUrl } = req.body;
-    const newCoffee = await Coffee.create({
+    const { userId, drinkId, location } = req.body;
+    const newCheckin = await Checkin.create({
         userId,
-        name,
-        description,
-        imageUrl,
+        drinkId,
+        location,
     });
-    const data = await Coffee.findByPk(newCoffee.id, {
-        include: User
+    const data = await Checkin.findByPk(newCheckin.id, {
+        include: [User, Coffee]
     });
     return res.json(data);
 }));

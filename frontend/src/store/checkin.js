@@ -13,12 +13,12 @@ const loadCheckins = (checkins) => {
     }
 }
 
-// const addCheckin = (newCoffee) => {
-//     return {
-//         type: ADD_CHECKIN,
-//         newCoffee
-//     }
-// }
+const addCheckin = (newCheckin) => {
+    return {
+        type: ADD_CHECKIN,
+        newCheckin
+    }
+}
 
 
 // Thunk action creators
@@ -28,24 +28,23 @@ export const getAllCheckins = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(loadCheckins(data));
-
     }
 }
 
-// export const addNewCheckin = newCoffee => async (dispatch) => {
-//     const response = await csrfFetch('/api/checkins', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(newCoffee)
-//     });
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(addCheckin(data));
-//         return data;
-//     }
-// }
+export const addNewCheckin = newCheckin => async (dispatch) => {
+    const response = await csrfFetch('/api/checkins', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCheckin)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(addCheckin(data));
+        return data;
+    }
+}
 
 
 
@@ -65,8 +64,8 @@ const checkinReducer = (state = { checkinArray: [] }, action) => {
             };
         case ADD_CHECKIN:
             const prevState = {...state};
-            prevState[action.newCoffee.id]=action.newCoffee;
-            prevState.checkinArray.push(action.newCoffee);
+            prevState[action.newCheckin.id]=action.newCheckin;
+            prevState.checkinArray.push(action.newCheckin);
             return prevState;
         default:
             return state;

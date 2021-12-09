@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { addNewCoffee, getAllCoffees } from "../../store/coffee";
+import { getAllCoffees } from "../../store/coffee";
+import { addNewCheckin } from "../../store/checkin";
 import './AddCheckinForm.css'
 
 function AddCheckinForm() {
@@ -32,13 +33,13 @@ function AddCheckinForm() {
             location
         }
 
-        // const added = await dispatch(addNewCoffee(newCheckin))
-        //     .catch(async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     });
+        const added = await dispatch(addNewCheckin(newCheckin))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
 
-        // if (added) history.push('/coffees')
+        if (added) history.push('/checkins')
 
     };
 
