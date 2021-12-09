@@ -1,14 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import './CheckinList.css'
 import Comment from '../Comment'
 
 const CheckinDetail = ({ checkin }) => {
 
-    // const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
+    const commentArray = useSelector(state => state.comment.commentArray)
+    const filteredComments = commentArray.filter(comment => comment.checkinId === checkin.id)
+    console.log(filteredComments);
 
-    
+
 
     const checkinCreated = new Date(checkin.createdAt);
     const checkinDate = checkinCreated.toDateString();
@@ -27,7 +29,9 @@ const CheckinDetail = ({ checkin }) => {
                     <i className="far fa-comments fa-2x"></i>
                 </div>
                 <div>
-                    <Comment />
+                    {filteredComments.map(comment => (
+                        <Comment comment={comment}/>
+                    ))}
                 </div>
             </div>
         </div>

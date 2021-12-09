@@ -20,7 +20,7 @@ router.get('/', asyncHandler(async (req, res) => {
     const allComments = await Comment.findAll({
         include: [User, Checkin]
     });
-    return res.json({ allComments });
+    return res.json(allComments);
 }));
 
 // Get a single comment
