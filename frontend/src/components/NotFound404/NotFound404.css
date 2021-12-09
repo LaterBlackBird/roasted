@@ -1,0 +1,19 @@
+#not-found-container {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 95%;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+#not-found-container img {
+  width: 70%;
+}
+
+#not-found-container p {
+    text-align: center;
+    font-size: 2rem;
+}
