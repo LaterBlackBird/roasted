@@ -8,6 +8,7 @@ import './CoffeeList.css'
 
 
 const CoffeeList = () => {
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
     const coffeeArr = useSelector(state => {
@@ -21,7 +22,7 @@ const CoffeeList = () => {
 
     return (
         <div id='coffee-list-container'>
-            <Link to='/coffees/new'><i className="far fa-plus-square"><span> ADD A COFFEE</span></i></Link>
+            {sessionUser && <Link to='/coffees/new'><i className="far fa-plus-square"><span> ADD A COFFEE</span></i></Link>}
             {coffeeArr.map(coffee => (
                 <CoffeeDetail key={coffee.id} coffee={coffee} />
             ))}

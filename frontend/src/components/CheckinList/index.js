@@ -8,6 +8,7 @@ import './CheckinList.css'
 
 
 const CheckinList = () => {
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
     const checkinArr = useSelector(state => {
@@ -21,7 +22,7 @@ const CheckinList = () => {
 
     return (
         <div id='checkin-list-container'>
-            <Link to='/checkins/new'><i className="far fa-plus-square"><span> ADD A CHECKIN</span></i></Link>
+            {sessionUser && <Link to='/checkins/new'><i className="far fa-plus-square"><span> ADD A CHECKIN</span></i></Link>}
             {checkinArr.map(checkin => (
                 <CheckinDetail key={checkin.id} checkin={checkin} />
             ))}
