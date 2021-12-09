@@ -1,7 +1,7 @@
-#add-coffee-form {
+.add-form {
   background-color: rgba(94, 175, 247, 0.7);
   height: 50%;
-  width: 70%;
+  width: 60%;
   margin-top: 5em;
   display: flex;
   flex-direction: column;
@@ -11,20 +11,22 @@
   border: 1px solid #1f69ab;
 }
 
-#add-coffee-form h1 {
+.add-form h1 {
   color: #ffcc7a;
   -webkit-text-stroke: .5px #382300;
+  text-align: center;
 }
 
-#add-coffee-form label {
+.add-form label {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1%;
   margin: 1%;
+  width: 80%
 }
 
-#add-coffee-form input,
+.add-form input,
 textarea {
   display: flex;
   flex-direction: column;
@@ -32,21 +34,22 @@ textarea {
   padding: 2%;
   border-radius: 5px;
   border: 1px grey solid;
-  height: 1.5rem;
-  width: 35em;
+  height: .5rem;
+  width: 80%;
 }
 
-#add-coffee-form textarea {
+.add-form textarea {
   height: 5rem;
+  width: 80%;
 }
 
-#add-coffee-form input::placeholder,
+.add-form input::placeholder,
 ::placeholder {
   font-weight: lighter;
   color: lightgray;
 }
 
-#add-coffee-form li {
+.add-form li {
   color: #382300;
 }
 

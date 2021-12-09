@@ -41,7 +41,7 @@ function AddCoffeeForm() {
     if (!sessionUser) return <Redirect to="/" />;
 
     return (
-        <form id='add-coffee-form' onSubmit={handleSubmit}>
+        <form className='add-form' onSubmit={handleSubmit}>
             <div>
                 <h1 id='add-text'>ADD A NEW HOT CUP OF JOY</h1>
             </div>

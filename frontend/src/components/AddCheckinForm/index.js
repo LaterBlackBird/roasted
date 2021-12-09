@@ -50,7 +50,7 @@ function AddCheckinForm() {
     if (!sessionUser) return <Redirect to="/" />;
 
     return (
-        <form id='add-checkin-form' onSubmit={handleSubmit}>
+        <form className='add-form' onSubmit={handleSubmit}>
             <div id='add-checkin-marquee'>
                 <h1 id='add-text'>LET EVERYONE KNOW WHERE YOU ARE</h1>
                 <h2>AND WHAT YOU'RE DOING</h2>
@@ -90,7 +90,7 @@ function AddCheckinForm() {
                 />
             </label>
             <div className='add-buttons'>
-                <button type="submit">Submit</button>
+                <button type="submit">Check-In</button>
                 <button onClick={returnToList}>Cancel</button>
             </div>
             <ul>
