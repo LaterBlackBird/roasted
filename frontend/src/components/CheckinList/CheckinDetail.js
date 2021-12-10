@@ -55,10 +55,12 @@ const CheckinDetail = ({ checkin }) => {
                             <p className='checkin-date'> {checkinDate}</p>
                         </div>
                     </div>
-                    <div className='add-comment-button' onClick={showCommentToggle}>
-                        <i className="far fa-comment" ></i>
-                        <span>Comment</span>
-                    </div>
+                    {sessionUser &&
+                        <div className='add-comment-button' onClick={showCommentToggle}>
+                            <i className="far fa-comment" ></i>
+                            <span>Comment</span>
+                        </div>
+                    }
                 </div>
                 {showCommentInput &&
                     <div className='comment-input'>
@@ -68,7 +70,7 @@ const CheckinDetail = ({ checkin }) => {
                 }
                 <div className='comment-list'>
                     {filteredComments.map(comment => (
-                        <Comment key={comment.id} comment={comment} checkinId={checkin.id}/>
+                        <Comment key={comment.id} comment={comment} checkinId={checkin.id} />
                     ))}
                 </div>
             </div>
