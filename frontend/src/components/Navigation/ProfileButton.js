@@ -8,6 +8,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const [numOfCoffees, setNumOfCoffees] = useState(0);
   const [numOfCheckins, setNumOfCheckins] = useState(0);
+  const [numOfComments, setNumOfComments] = useState(0);
   const sessionUser = useSelector(state => state.session.user)
 
   const openMenu = async () => {
@@ -15,8 +16,9 @@ function ProfileButton({ user }) {
     setShowMenu(true);
 
     const userStats = await dispatch(sessionActions.getAUser(sessionUser.id))
-    setNumOfCoffees(userStats.Coffees.length)
-    setNumOfCheckins(userStats.Checkins.length)
+    setNumOfCoffees(userStats.Coffees.length);
+    setNumOfCheckins(userStats.Checkins.length);
+    setNumOfComments(userStats.Comments.length);
   };
 
   useEffect(() => {
@@ -51,6 +53,7 @@ function ProfileButton({ user }) {
           <li id='stats'>Stats</li>
           <li><i className="fas fa-coffee"></i> {numOfCoffees}</li>
           <li><i className="far fa-check-circle"></i> {numOfCheckins}</li>
+          <li><i className="far fa-comment"></i> {numOfComments}</li>
         </ul>
       )}
     </>
