@@ -1,0 +1,8 @@
+.about-card {
+    display: flex;
+}
+.about-pic{
+    object-fit: cover;
+    height: 25vh;
+    border-radius: 50%;
+}
