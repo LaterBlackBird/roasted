@@ -53,6 +53,10 @@
     align-items: center;
 }
 
+.add-comment-button:hover{
+    cursor: pointer;
+}
+
 .add-comment-button span{
     font-size: 1em;
 }

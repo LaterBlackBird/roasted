@@ -71,6 +71,8 @@ const Comment = ({ comment, checkinId }) => {
         dispatch(deleteThisComment(comment.id))
     }
 
+    if (!sessionUser && showEditField === true) setShowEditField(false);
+
 
     let userOptions;
     if (sessionUser && sessionUser.username === comment.User.username) {

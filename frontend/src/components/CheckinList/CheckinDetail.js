@@ -44,6 +44,9 @@ const CheckinDetail = ({ checkin }) => {
         }
     }
 
+    if (!sessionUser && showCommentInput === true) setShowCommentInput(false);
+
+
     return (
         <div className='checkin-detail'>
             <div className='checkin-card'>

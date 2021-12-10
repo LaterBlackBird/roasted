@@ -90,7 +90,7 @@ export const editThisComment = editedComment => async (dispatch) => {
 
 const sortList = (list) => {
     return list.sort((commentA, commentB) => {
-      return commentB.id - commentA.id;
+      return commentA.id - commentB.id;
     });
   };
 
@@ -127,7 +127,8 @@ const commentReducer = (state = { commentArray: [] }, action) => {
             editState.commentArray = editState.commentArray.filter(
                 comment => comment.id !== action.editedComment.id
             );
-            editState.commentArray.unshift(action.editedComment);
+            editState.commentArray.push(action.editedComment);
+            prevState.commentArray = sortList(prevState.commentArray)
             return editState;
         default:
             return state;
