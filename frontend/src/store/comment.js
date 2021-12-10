@@ -2,10 +2,10 @@ import { csrfFetch } from './csrf';
 
 // Action types
 // To help prevent errors
-const GET_COMMENTS = 'coffees/GET_COMMENTS'
-const ADD_COMMENT = 'coffees/ADD_COMMENT'
-const DELETE_COMMENT = 'coffees/DELETE_COMMENT'
-const EDIT_COMMENT = 'coffees/EDIT_COMMENT'
+const GET_COMMENTS = 'comments/GET_COMMENTS'
+const ADD_COMMENT = 'comments/ADD_COMMENT'
+const DELETE_COMMENT = 'comments/DELETE_COMMENT'
+const EDIT_COMMENT = 'comments/EDIT_COMMENT'
 
 // Actions
 const loadComments = (comments) => {
@@ -29,10 +29,10 @@ const deleteComment = (commentId) => {
     }
 }
 
-const editComment = (editedCommentt) => {
+const editComment = (editedComment) => {
     return {
         type: EDIT_COMMENT,
-        editedCommentt
+        editedComment
     }
 }
 
@@ -72,7 +72,7 @@ export const deleteThisComment = commentId => async (dispatch) => {
 }
 
 export const editThisComment = editedComment => async (dispatch) => {
-    const response = await csrfFetch(`/api/coffees/${editedComment.coffeeId}`, {
+    const response = await csrfFetch(`/api/comments/${editedComment.commentId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -80,11 +80,13 @@ export const editThisComment = editedComment => async (dispatch) => {
         body: JSON.stringify(editedComment)
     });
     if (response.ok) {
-        const data = await response.json();
-        dispatch(editComment(data));
-        return data;
+        const updatedComment = await response.json();
+        dispatch(editComment(updatedComment));
+        return updatedComment;
     }
 }
+
+
 
 const sortList = (list) => {
     return list.sort((commentA, commentB) => {
@@ -119,14 +121,15 @@ const commentReducer = (state = { commentArray: [] }, action) => {
                 comment => comment.id !== action.commentId
                 )
             return newState;
-        // case EDIT_COMMENT:
-        //     const editState = {...state};
-        //     editState[action.revCoffee.id] = action.revCoffee;
-        //     editState.list = editState.list.filter(
-        //         coffee => coffee.id !== action.revCoffee.id
-        //     );
-        //     editState.list.push(action.revCoffee);
-        //     return editState;
+        case EDIT_COMMENT:
+            console.log(action);
+            const editState = {...state};
+            editState[action.editedComment.id] = action.editedComment;
+            editState.commentArray = editState.commentArray.filter(
+                comment => comment.id !== action.editedComment.id
+            );
+            editState.commentArray.unshift(action.editedComment);
+            return editState;
         default:
             return state;
     }
