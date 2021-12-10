@@ -16,11 +16,24 @@
   width: 90%;
 }
 
+.commentView-commentInfo-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .commentView-username,
 .commentView-comment {
   margin: 0.25em 0;
   font-weight: 200;
   font-size: 0.75rem;
+}
+
+.commentView-elapsedTime{
+  margin: 0;
+  padding: 0;
+  font-size: .625em;
+  font-weight: 200;
 }
 
 .commentView-editComment {
@@ -41,8 +54,6 @@
   height: 3.5rem;
   width: 100%;
 }
-
-
 
 .commentView-editComment textarea:focus {
   outline: none;
