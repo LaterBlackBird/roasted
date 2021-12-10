@@ -1,0 +1,60 @@
+.comment-container {
+  max-width: inherit;
+  padding: 1em 0;
+  border-top: 1px solid black;
+  display: flex;
+}
+
+.comment-container .fa-user {
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5em;
+}
+
+.commentView-commentInfo {
+  width: 80%;
+}
+
+.commentView-username,
+.commentView-comment {
+  margin: 0.25em 0;
+  font-weight: 200;
+  font-size: 0.75rem;
+}
+
+.commentView-editComment {
+  border: 0.5px grey solid;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  height: 3.5em;
+  width: 100%;
+  margin: 2%;
+}
+
+.commentView-editComment textarea {
+  border: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+  resize: none;
+  height: 3.5rem;
+  width: 100%;
+}
+
+.commentView-editComment textarea:focus {
+  outline: none;
+}
+
+.commentView-editCommentConfirm {
+  color: green;
+}
+
+.commentView-editCommentCancel {
+  color: maroon;
+}
+
+.commentView-editCommentConfirm,
+.commentView-editCommentCancel {
+  margin: 10% 0 10% 20%;
+}

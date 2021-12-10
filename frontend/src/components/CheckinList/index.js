@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllCheckins } from '../../store/checkin';
+import { getAllComments } from '../../store/comment';
 import CheckinDetail from './CheckinDetail';
 import './CheckinList.css'
 
@@ -17,6 +18,7 @@ const CheckinList = () => {
 
     useEffect(() => {
         dispatch(getAllCheckins())
+        dispatch(getAllComments())
     }, [dispatch])
 
 

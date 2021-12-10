@@ -18,6 +18,9 @@ const Splash = () => {
                 <div className='feature-box'>
                     <p>CHECK-IN SO YOUR FRIENDS KNOW YOUR FAVORITE SPOTS AND DRINKS</p>
                 </div>
+                <div className='feature-box'>
+                    <p>LET OTHERS KNOW YOUR THOUGHTS ON THEIR CHECK-INS WITH COMMENTS</p>
+                </div>
             </div>
 
         </div>

@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import coffeeReducer from './coffee'
 import checkinReducer from "./checkin";
+import commentReducer from "./comment";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   coffee: coffeeReducer,
-  checkin: checkinReducer
+  checkin: checkinReducer,
+  comment: commentReducer
 });
 
 let enhancer;
