@@ -91,7 +91,7 @@ const Comment = ({ comment, checkinId }) => {
                     <span className='commentView-elapsedTime'>{elapsedTime}</span>
                 </div>
                 {showEditField &&
-                    <div className='commentView-editComment' >
+                    <div className={`commentView-editComment ${errors.length > 0 ? "error" : ""}`} >
                         <textarea value={editedComment} onChange={(e) => setEditedComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
                         <div className='commentView-editCommentOptions'>
                             <i className="fas fa-check commentView-editCommentConfirm" onClick={editComment}><span> Submit</span></i>

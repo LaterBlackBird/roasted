@@ -63,7 +63,7 @@ const CheckinDetail = ({ checkin }) => {
                     }
                 </div>
                 {showCommentInput &&
-                    <div className='comment-input'>
+                    <div className={`comment-input ${errors.length > 0 ? "error" : ""}`}>
                         <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
                         <i className="fas fa-plus fa-2x" onClick={addComment}></i>
                     </div>
