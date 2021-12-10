@@ -73,4 +73,7 @@
   font-size: .8em;
 }
 
-
+.commentView-editCommentConfirm:hover,
+.commentView-editCommentCancel:hover{
+  cursor: pointer;
+}
