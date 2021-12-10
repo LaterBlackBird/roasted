@@ -62,8 +62,8 @@ const Comment = ({ comment, checkinId }) => {
                     <div className='commentView-editComment' >
                         <textarea value={editedComment} onChange={(e) => setEditedComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
                         <div className='commentView-editCommentOptions'>
-                            <i className="fas fa-check commentView-editCommentConfirm" onClick={editComment}></i>
-                            <i className="fas fa-ban commentView-editCommentCancel" onClick={() => setShowEditField(!showEditField)}></i>
+                            <i className="fas fa-check commentView-editCommentConfirm" onClick={editComment}><span> Submit</span></i>
+                            <i className="fas fa-ban commentView-editCommentCancel" onClick={() => setShowEditField(!showEditField)}><span> Cancel</span></i>
                         </div>
                     </div>
                 }

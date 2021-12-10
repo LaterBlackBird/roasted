@@ -13,7 +13,7 @@
 }
 
 .commentView-commentInfo {
-  width: 80%;
+  width: 90%;
 }
 
 .commentView-username,
@@ -30,7 +30,7 @@
   align-items: center;
   height: 3.5em;
   width: 100%;
-  margin: 2%;
+  margin: 2% 0 2% 0;
 }
 
 .commentView-editComment textarea {
@@ -41,6 +41,8 @@
   height: 3.5rem;
   width: 100%;
 }
+
+
 
 .commentView-editComment textarea:focus {
   outline: none;
@@ -56,5 +58,6 @@
 
 .commentView-editCommentConfirm,
 .commentView-editCommentCancel {
-  margin: 10% 0 10% 20%;
+  margin: 6% 0 6% 20%;
+  font-size: .8em;
 }

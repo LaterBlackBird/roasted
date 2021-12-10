@@ -122,7 +122,6 @@ const commentReducer = (state = { commentArray: [] }, action) => {
                 )
             return newState;
         case EDIT_COMMENT:
-            console.log(action);
             const editState = {...state};
             editState[action.editedComment.id] = action.editedComment;
             editState.commentArray = editState.commentArray.filter(
