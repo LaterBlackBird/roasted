@@ -1,8 +1,48 @@
 .about-card {
+    background: hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(1rem);
+    border-radius: 0 10px 10px 0;
+    position: absolute;
+    inset: 25vh 0px;
     display: flex;
+    flex-direction: row;
+    width: 15%;
+    height: 50vh;
+    transition: 2s ease;
 }
+
+
 .about-pic{
     object-fit: cover;
-    height: 25vh;
+    height: 5vh;
     border-radius: 50%;
+}
+
+.about-tag {
+    background: hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(1rem);
+    border-radius: 0 10px 10px 0;
+    position: absolute;
+    inset: 25vh 0px;
+    height: 50vh;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    transition: .3s ease;
+}
+
+#about-tag-text{
+    color: white;
+    transform: rotate(-90deg);
+}
+
+.move-out{
+    transform: translateX(-100%)
+}
+
+.show{
+    transition-delay: 1s;
+}
+.hidden {
+    opacity: 0;
 }

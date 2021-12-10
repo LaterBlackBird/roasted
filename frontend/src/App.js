@@ -47,14 +47,12 @@ function App() {
           <Route path="/checkins/new">
             <AddCheckinForm />
           </Route>
-          <Route path="/about">
-            <AboutPage />
-          </Route>
           <Route>
             <NotFound404 />
           </Route>
         </Switch>
       )}
+      <AboutPage />
     </>
   );
 }
