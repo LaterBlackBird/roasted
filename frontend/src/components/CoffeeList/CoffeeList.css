@@ -72,6 +72,10 @@
     margin: 0 .8rem;
 }
 
+.fa-edit:hover{
+    cursor: pointer;
+}
+
 .fa-trash-alt{
     color: rgba(255, 0, 0, .7);
     cursor: pointer;
