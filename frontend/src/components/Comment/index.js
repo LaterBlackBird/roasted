@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteThisComment, editThisComment } from '../../store/comment';
+import './Comment.css';
 
 
 const Comment = ({ comment, checkinId }) => {
@@ -53,18 +54,22 @@ const Comment = ({ comment, checkinId }) => {
     }
 
     return (
-        <div>
+        <div className='comment-container'>
             <i className="far fa-user"></i>
-            <p>{comment.User.username}:</p>
-            {showEditField &&
-                <div>
-                    <textarea value={editedComment} onChange={(e) => setEditedComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
-                    <i className="fas fa-check" onClick={editComment}></i>
-                    <i className="fas fa-ban" onClick={() => setShowEditField(!showEditField)}></i>
-                </div>
-            }
-            {!showEditField && <p>{comment.comment}</p>}
-            {userOptions}
+            <div className='commentView-commentInfo'>
+                <p className='commentView-username'>{comment.User.username}:</p>
+                {showEditField &&
+                    <div className='commentView-editComment' >
+                        <textarea value={editedComment} onChange={(e) => setEditedComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
+                        <div className='commentView-editCommentOptions'>
+                            <i className="fas fa-check commentView-editCommentConfirm" onClick={editComment}></i>
+                            <i className="fas fa-ban commentView-editCommentCancel" onClick={() => setShowEditField(!showEditField)}></i>
+                        </div>
+                    </div>
+                }
+                {!showEditField && <p className='commentView-comment' >{comment.comment}</p>}
+                {userOptions}
+            </div>
         </div>
     )
 }

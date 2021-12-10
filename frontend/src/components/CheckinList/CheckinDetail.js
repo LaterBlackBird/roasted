@@ -55,17 +55,18 @@ const CheckinDetail = ({ checkin }) => {
                             <p className='checkin-date'> {checkinDate}</p>
                         </div>
                     </div>
-                    <div onClick={showCommentToggle}>
-                        <i className="far fa-comments fa-2x" ></i>
+                    <div className='add-comment-button' onClick={showCommentToggle}>
+                        <i className="far fa-comment" ></i>
+                        <span>Comment</span>
                     </div>
                 </div>
                 {showCommentInput &&
-                    <div>
+                    <div className='comment-input'>
                         <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder={errors.length ? errors[0] : 'Comment'}></textarea>
-                        <i className="fas fa-plus" onClick={addComment}></i>
+                        <i className="fas fa-plus fa-2x" onClick={addComment}></i>
                     </div>
                 }
-                <div>
+                <div className='comment-list'>
                     {filteredComments.map(comment => (
                         <Comment key={comment.id} comment={comment} checkinId={checkin.id}/>
                     ))}
