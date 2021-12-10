@@ -9,6 +9,7 @@ body {
     background-image: url(https://res.cloudinary.com/dd1ndszow/image/upload/v1638736371/roasted-home-background_k0oxhj.png);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     display: flex;
     flex-direction: column;

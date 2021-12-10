@@ -72,6 +72,10 @@
     margin-bottom: 2%;
 }
 
+.error{
+    border: 2px red solid;
+}
+
 .comment-list {
     width: 80%;
 }
