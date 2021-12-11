@@ -25,14 +25,14 @@ function SignupFormPage() {
           if (data && data.errors) setErrors(data.errors);
         });
 
-        
+
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
     <form id='signup-form' onSubmit={handleSubmit}>
-      <img id='signup-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png' alt='roasted logo' />
+      <img id='signup-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Roasted/Logo_eu5sbs.png' alt='roasted logo' />
       <div className='login-text' id='roasted-name'>Roasted</div>
       <p className='login-text' id='roasted-tagline'>Cozy Up With Friends</p>
       <label>

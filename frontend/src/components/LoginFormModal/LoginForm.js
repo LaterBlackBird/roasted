@@ -35,7 +35,7 @@ function LoginForm() {
 
   return (
     <form id='login-form' onSubmit={handleSubmit}>
-      <img id='login-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png' alt='roasted logo' />
+      <img id='login-logo' src='https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Roasted/Logo_eu5sbs.png' alt='roasted logo' />
       <div className='login-text' id='roasted-name'>Roasted</div>
       <p className='login-text' id='roasted-tagline'>Cozy Up With Friends</p>
       <div className='login-input'>

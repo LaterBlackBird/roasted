@@ -21,7 +21,7 @@ const AboutPage = () => {
         <>
             <div className={`about-card ${!showAbout ? 'move-out' : ''}`}>
                 <div className="about-info">
-                    <img className='about-pic' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1639161384/Seth_the_photographer_otencm.png" alt="me holding a coffee" />
+                    <img className='about-pic' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1639161384/Roasted/Seth_the_photographer_otencm.png" alt="me holding a coffee" />
                     <p>Seth Holland</p>
                     <span>
                         <a href='https://github.com/LaterBlackBird' target="_blank" rel="noopener noreferrer" ><i className="fab fa-github-square" ></i></a>
