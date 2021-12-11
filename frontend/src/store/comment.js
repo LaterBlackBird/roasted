@@ -128,7 +128,7 @@ const commentReducer = (state = { commentArray: [] }, action) => {
                 comment => comment.id !== action.editedComment.id
             );
             editState.commentArray.push(action.editedComment);
-            prevState.commentArray = sortList(prevState.commentArray)
+            editState.commentArray = sortList(editState.commentArray)
             return editState;
         default:
             return state;

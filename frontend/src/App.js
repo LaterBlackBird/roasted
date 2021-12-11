@@ -11,6 +11,7 @@ import CoffeeEditForm from "./components/CoffeeEditForm";
 import CheckinList from "./components/CheckinList";
 import AddCheckinForm from "./components/AddCheckinForm";
 import NotFound404 from "./components/NotFound404";
+import AboutPage from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <AboutPage />
     </>
   );
 }

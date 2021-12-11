@@ -1,0 +1,86 @@
+.about-card {
+  background: hsl(0 0% 100% / 0.1);
+  backdrop-filter: blur(1rem);
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+  inset: 25vh 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  height: 60vh;
+  transition: 2s ease;
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.about-info p {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin: 5% 0 2% 0;
+}
+
+.about-info span {
+  text-align: center;
+  width: 100%;
+}
+
+.about-info span a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-info .fab {
+  font-size: 2.5rem;
+  margin: 0 3%;
+}
+
+.about-info .tech-badge {
+  margin: 1px;
+  height: 5%;
+}
+
+.about-pic {
+  object-fit: cover;
+  width: 50%;
+  border-radius: 50%;
+  margin-top: 8%;
+}
+
+.about-tag {
+  background: hsl(0 0% 100% / 0.1);
+  backdrop-filter: blur(1rem);
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+  inset: 25vh 0px;
+  height: 60vh;
+  width: 2.6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+#about-tag-text {
+  color: white;
+  transform: rotate(-90deg);
+  font-size: 1.5em;
+  height: fit-content;
+}
+
+.move-out {
+  transform: translateX(-100%);
+}
+
+.show {
+  transition-delay: 1s;
+}
+.hidden {
+  opacity: 0;
+}
