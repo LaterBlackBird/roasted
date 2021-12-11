@@ -1,6 +1,6 @@
 # Roasted
 
-Roasted is a full-stack application serving as a React.js, Redux, Express, PostgreSQL full stack solo project
+Roasted is an application serving as a React.js, Redux, Express, PostgreSQL full stack solo project
  to display current skill level in these areas.  The aim is to make a copy of the popular Untapped.com website
   except centered around coffee.
 
