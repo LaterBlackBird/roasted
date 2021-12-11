@@ -47,7 +47,7 @@
 
 .about-pic {
   object-fit: cover;
-  height: 15vh;
+  width: 50%;
   border-radius: 50%;
   margin-top: 15%;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -10,12 +10,12 @@ function Navigation({ isLoaded }) {
 
   let sessionLinks;
   let smallLogo = (
-    <a href="/">
+    <Link to="/">
       <div id='small-nav-logo'>
         <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png" alt="logo" />
         <h2 id='nav-name'>ROASTED</h2>
       </div>
-    </a>
+    </Link>
   )
   const location = useLocation();
 

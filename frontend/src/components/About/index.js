@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import "./About.css"
 
 
@@ -25,8 +24,8 @@ const AboutPage = () => {
                     <img className='about-pic' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1639161384/Seth_the_photographer_otencm.png" alt="me holding a coffee" />
                     <p>Seth Holland</p>
                     <span>
-                        <a href='https://github.com/LaterBlackBird' target="_blank" rel="noopener noreferrer" ><i class="fab fa-github-square" ></i></a>
-                        <a href='https://www.linkedin.com/in/seth-holland/' target="_blank" rel="noopener noreferrer" ><i class="fab fa-linkedin"></i></a>
+                        <a href='https://github.com/LaterBlackBird' target="_blank" rel="noopener noreferrer" ><i className="fab fa-github-square" ></i></a>
+                        <a href='https://www.linkedin.com/in/seth-holland/' target="_blank" rel="noopener noreferrer" ><i className="fab fa-linkedin"></i></a>
                     </span>
                     <p>Tech Stack</p>
                     <img className='tech-badge' src={`https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white`} alt="Node.js" />
