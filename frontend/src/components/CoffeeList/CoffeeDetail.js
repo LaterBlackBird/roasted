@@ -27,7 +27,7 @@ const CoffeeDetail = ({ coffee }) => {
     return (
         <div className='coffee-detail'>
             <div className='coffee-detail-info'>
-                <img className='coffee-img' src={coffee.imageUrl ? coffee.imageUrl : "https://res.cloudinary.com/dd1ndszow/image/upload/v1638898746/Coffee-Default_to4zq1.png"} alt="default coffee cup" />
+                <img className='coffee-img' src={coffee.imageUrl ? coffee.imageUrl : "https://res.cloudinary.com/dd1ndszow/image/upload/v1638898746/Roasted/Coffee-Default_to4zq1.png"} alt="default coffee cup" />
                 <div className='coffee-detail-text'>
                     <span className='coffee-detail-name'>{coffee.name}</span>
                     <span className='coffee-detail-description'>{coffee.description}</span>

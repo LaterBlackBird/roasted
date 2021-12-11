@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
   let smallLogo = (
     <Link to="/">
       <div id='small-nav-logo'>
-        <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Logo_eu5sbs.png" alt="logo" />
+        <img id='nav-logo' src="https://res.cloudinary.com/dd1ndszow/image/upload/v1638735300/Roasted/Logo_eu5sbs.png" alt="logo" />
         <h2 id='nav-name'>ROASTED</h2>
       </div>
     </Link>
