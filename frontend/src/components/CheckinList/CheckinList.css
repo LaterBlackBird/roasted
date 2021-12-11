@@ -100,7 +100,11 @@
 
 .fa-plus {
     color: #1f69ab;
-    padding: 2%;
+    padding-right: 2%;
     position: absolute;
     right: 29%;
+}
+
+.fa-plus:hover{
+    cursor: pointer;
 }
